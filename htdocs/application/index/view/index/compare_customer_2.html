@@ -1,0 +1,740 @@
+{extend name="Public:header" /}
+{block name="content"}
+<html>
+<head>
+    <meta charset="utf-8">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+TC&display=swap" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker3.standalone.min.css"> -->
+    
+    <!-- 使用 jQuery Datepicker的中文化-->
+    <!-- <script type="text/javascript" src="../jquery/jquery.ui.datepicker-zh-TW.js"></script><a name="more"></a>
+    <span style="font-family: Times New Roman;"><span style="white-space: normal;">
+    </span></span> -->
+    
+    <style>
+        html{
+            height: 100%;
+        }
+
+        body{
+            font-family: 'Noto Sans TC', sans-serif;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* .rwd-table input[type="checkbox"]{
+            opacity: 1;
+        } */
+
+        .c1{
+            height: auto;
+            background-color: #fff;
+            padding-top: 1.5%;
+        }
+
+        .bar{
+            position: absolute;
+            top: 3%;
+            right: 3%;
+        }
+
+        .t{
+            font-size: 30px;
+            padding-left: 9%;
+            background-color: #fff;
+           
+            color:#466900;
+            padding-top: 3%;
+            float: left;
+        }
+
+        .link{
+            padding-top: 3.7%;
+            padding-left: 65.5%;
+        }
+
+        .link a{
+            color: black;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .link span{
+            margin-left: 2%;
+            margin-right: 2%;
+        }
+
+        .content{
+            background-color: #fff;
+            margin-left: 9%;
+            width: 75%;
+        }
+
+        .bbb{
+            display: none;
+        }
+        
+        .good_name{
+            float: left;
+            font-size: 24px;
+            font-weight: bold;
+            color:#466900;
+            margin-right: 3%;
+            margin-left: 5%;
+            margin-top: 2%;
+            clear: both;
+        }
+
+        .compare_bg{
+            margin-left: 9%;
+            width: 80%;
+        }
+
+        /* .customer_name{
+            clear: both;
+            margin-top: 2%;
+            float: left;
+            width: 10%;
+        }
+
+        .customer_name span{
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .customer_name img{
+            width: 50%;
+            border-radius: 25px;
+            margin-left: 8%;
+            margin-bottom: 1%;
+        }
+
+        .name_address{
+            padding-top: 2%;
+        } 
+
+        .live_name{
+            margin-top: 2%;
+        }
+
+        .live_name span{
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .live_address{
+            margin-top: 1%;
+        }
+
+        .live_address span{
+            font-size: 22px;
+            font-weight: bold;
+        }*/
+
+        .live_content{
+            margin-top: 3%;
+            width: 75%;
+            clear: both;
+        }
+
+        .live_content span{
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .line-1{
+            margin-top: 2%;
+            font-size: 16px;
+            white-space: nowrap;
+            overflow: hidden;
+            transform: translateY(-50%);
+            /* border-right: 2px solid black; */
+            width: 71%;
+            font-weight: bold;
+            display: none;
+        }
+
+        /* .line-1 span{
+            background-color: red;
+        } */
+
+        /* Animation */
+        /* .anim-typewriter{
+        animation: typewriter 8s steps(54) 1s 1 normal both,
+                    blinkTextCursor 500ms steps(54) infinite normal;
+        }
+        @keyframes typewriter{
+        from{width: 0;}
+        to{width: 71%;}
+        }
+        @keyframes blinkTextCursor{
+        from{border-right-color: black;}
+        to{border-right-color: transparent;}
+        } */
+        /* Animation end */
+
+        .word_compare{
+            margin-left: 8.5%;
+            background-color: #f5f5f5;
+            width: 75%;
+            padding-bottom: 3%;
+            padding-top: 1%;
+            margin-top: 1%;
+        }
+
+        .word_compare span{
+            font-size: 22px;
+            font-weight: bold;
+            margin-right: 1%;
+            margin-left: 0.8%;
+        }
+
+        .word_compare .word{
+            margin-top: 3%;
+            width: 75%;
+            /* line-height: 300%; */
+            line-height: 50px;
+            margin-left: 0.8%;
+            display: none;
+        }
+
+        .word_compare .word span{
+            background-color:#b37b56;
+            padding: 1%;
+            font-size: 16px;
+            color: black;
+            border-radius: 7px;
+            margin-left: 0;
+            margin-right: 2%;
+        }
+
+        .result{
+            margin-top: 2%;
+            margin-bottom: 2%;
+        }
+
+        .result span{
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .ta{
+            display: flex;
+            justify-content: center;
+            margin-top: 0%;
+        }
+
+        .ta table{
+            width: 100%;
+            text-align: center;
+            overflow: auto;
+        }
+
+        .rwd-table {
+		 	 overflow: hidden;
+			}
+
+			/* .rwd-table tr:nth-of-type(2n){
+			  background: #eee;
+            } */
+            
+			.rwd-table th, 
+			.rwd-table td {
+			  margin: 0.5em 1em;
+            }
+            
+			.rwd-table {
+			  min-width: 100%;
+			}
+
+			.rwd-table th {
+			  display: none;
+			}
+
+			.rwd-table td {
+              display: block;
+              font-size: 16px;
+              font-weight: bold;
+              line-height: 40px;
+            }
+            
+            .rwd-table .keyword span{
+                background-color:#b37b56;
+                padding: 3%;
+                font-size: 16px;
+                color: black;
+                border-radius: 7px;
+                line-height: 48px;
+            }
+
+            .rwd-table .pic{
+                width: 25%;
+            }
+
+            .rwd-table td img{
+                width: 15%;
+                border-radius: 25px;
+            }
+
+			.rwd-table td:before {
+			  content: attr(data-th) " : ";
+			  width: 6.5em;
+              display: inline-block;
+              color:#f69e53;
+			}
+
+			.rwd-table th, .rwd-table td {
+              text-align: center;
+              font-family: 微軟正黑體;
+            }
+            
+            .rwd-table th{
+                color: white;
+            }
+
+			.rwd-table th, .rwd-table td:before {
+              font-weight: bold;
+              font-size: 18px;
+              font-family: 微軟正黑體;
+            }
+
+            .rwd-table tr:first-child{
+                border-left: 0;
+                background-color: #f69e53;
+                border-bottom: none;
+            }
+
+            .rwd-table tr:first-child:hover{
+                border-left: 0;
+                background-color: #f69e53;
+            }
+
+            .rwd-table tr{
+                /* border-left: 5px solid white; */
+                border-bottom: 1.5px solid #c8c8a9;
+                color:dimgray;
+            }
+
+            .rwd-table tr:last-child{
+                border-bottom: 0;
+            }
+
+            .rwd-table tr:hover{
+                background-color: #eaeaea;
+                /* border-left: 5px solid #c8c8a9; */
+            }
+
+            .rwd-table .btn1, .rwd-table .btn2, .rwd-table .btn3{
+                border: 0;
+                border-radius: 7px;
+                padding-top: 2px;
+                padding-bottom: 2px;
+                font-weight: bold;
+            }
+
+            .rwd-table .btn1{
+                background-color: #009A31;
+                line-height: 30px;
+            }
+
+            .rwd-table .btn2{
+                background-color: #DE3C3C;
+                line-height: 30px;
+            }
+
+            .rwd-table .btn3{
+                background-color: #00A0FF;
+                line-height: 30px;
+            }
+
+            .rwd-table .number{
+                width: 15%;
+            }
+
+            .rwd-table .keyword{
+                width: 30%;
+            }
+
+            .rwd-table .collapse span{
+                /* color: #f9802d; */
+                line-height: 40px;
+            }
+
+        .fa-pencil-alt{
+            background-color: #dddddd;
+            padding: 8%;
+            border-radius: 25px;
+        }
+
+        .fa-times{
+            background-color: #c8c8a9;
+            padding: 8% 12% 8% 12%;
+            border-radius: 25px;
+        }
+
+        .pag{
+            display: none;
+        }
+
+        .pagination{
+            display: flex;
+            justify-content: center;
+            padding-top: 2%;
+            background-color: white;
+        }
+
+        .pagination .page-link{
+            color: black;
+        }
+
+        @media(max-width: 480px){
+            .link{
+                padding-top: 3.7%;
+                padding-left: 9.5%;
+                clear: both;
+            }
+
+            .live_content{
+                margin-top: 3%;
+                width: 100%;
+            }
+
+            .line-1{
+                width: 100%;
+                margin-top: 3%;
+            }
+
+            /* Animation */
+            /* .anim-typewriter{
+                animation: typewriter 5s steps(54) 1s 1 normal both,
+                            blinkTextCursor 500ms steps(54) infinite normal;
+                }
+                @keyframes typewriter{
+                from{width: 0;}
+                to{width: 100%;}
+                }
+                @keyframes blinkTextCursor{
+                from{border-right-color: black;}
+                to{border-right-color: transparent;}
+            } */
+            /* Animation end */
+            
+            .c1{
+                padding-top: 5%;
+            }
+
+            .content{
+                background-color: #fff;
+                margin-left: 2%;
+                width: 85%;
+            }
+
+            .word_compare{
+                margin-top: 3.5%;
+            }
+
+            .result{
+                margin-top: 2%;
+                margin-bottom: 2%;
+                margin-left: 7.5%;
+            }
+
+            .rwd-table td{
+                text-align: left;
+            }
+
+            .rwd-table td img{
+                width: 20%;
+            }
+
+            .rwd-table .pic{
+                width: 70%;
+            }
+
+            .rwd-table .keyword{
+                width: 90%;
+            }
+
+            .rwd-table .collapse span{
+                display: none;
+            }
+                
+            .fa-pencil-alt{
+                padding: 3%;
+            }
+
+            .fa-times{
+                padding: 3% 4% 3% 4%;
+            }
+
+            .pagination{
+                padding-top: 10%;
+                padding-bottom: 10%;
+            }
+        }
+        
+        @media (min-width: 480px) {
+              
+              .rwd-table td:before {
+              display: none;
+            }
+           .rwd-table th, .rwd-table td {
+              display: table-cell;
+              padding: 0.25em 0.5em;
+            }
+            .rwd-table th:first-child, 
+            .rwd-table td:first-child {
+              padding-left: 0;
+            }
+            .rwd-table th:last-child, 
+            .rwd-table td:last-child {
+              padding-right: 0;
+            }
+             .rwd-table th, 
+             .rwd-table td {
+              padding: 1em !important;
+            }
+          }
+    </style>
+</head>
+<body onload="color()">
+    <div class="t">
+        分析比對
+    </div>
+
+    <div class="link">
+        <a href="{:url('Index/view')}"><i class="far fa-home"></i></a><span>></span>
+        <a href="{:url('Index/compare_customer')}">代看直播比對</a><span>></span>
+        <a href="{:url('Index/compare_customer_2')}">分析比對</a>
+    </div>
+
+    <div class="compare_bg">
+        <!-- <div class="customer_name">
+            <img src="__PUBLIC__/image/pic.jpg"><br>
+            <span>代購者</span> 
+        </div>
+
+        <div class="name_address">
+            <div class="live_name">
+                <span>直播名稱 : 123</span>
+            </div>
+
+            <div class="live_address">
+                <span>直播網址 : </span>
+                <div>
+
+                </div>
+            </div>
+        </div> -->
+
+        <div class="live_content">
+            <span>直播內容</span>
+
+            <div class="line-1">
+                這件GAP灰色的外套很便宜，只要800元，然後尺寸是m，想要的趕快留言+1
+            </div>
+
+            <script>
+                setTimeout(function() { $(".line-1").show(); }, 1500);
+            </script>
+        </div>
+    </div>
+
+    
+
+    <!--<div class="word_compare">
+        <span>斷詞分析結果</span>
+        
+        <div class="word">
+            <span>Nike</span>
+            <span>白色上衣</span>
+            <span>Adidas</span>
+            <span>Nike</span>
+        
+        </div>
+    </div>-->
+    
+   
+    <div class="word_compare">
+            <span>斷詞分析結果</span>
+            {volist name="jieba" id="pvo" empty=""}                   
+                    <div class="word" id="{$pvo.id}">
+                                    <span>{$pvo.exone}</span>
+                                    <span>{$pvo.extwo}</span>
+                                    <span>{$pvo.exthree}</span>
+                                    <span>{$pvo.exfour}</span>
+                                    <span>{$pvo.exfive}</span>
+                                    <span>{$pvo.exsix}</span>
+                                    <span>{$pvo.exseven}</span>
+                                    <span>{$pvo.exeight}</span>
+                                    <span>{$pvo.exnine}</span>
+                                    <span>{$pvo.exten}</span>
+                                    <span>{$pvo.exeleven}</span>
+                                    <span>{$pvo.extwelve}</span>
+                                    <span>{$pvo.exthirteen}</span>
+                                    <span>{$pvo.exfourteen}</span>
+                                    <span>{$pvo.exfifteen}</span>
+                                    <span>{$pvo.exsixteen}</span>
+                                    <span>{$pvo.exseventeen}</span>
+                                    <span>{$pvo.exeighteen}</span>
+                                    <span>{$pvo.exnineteen}</span>
+                                    <span>{$pvo.extwenty}</span>
+                                    <span>{$pvo.extwentyone}</span>
+                                    <span>{$pvo.extwentytwo}</span>
+                                    <span>{$pvo.extwentythree}</span>
+                                    <span>{$pvo.extwentyfour}</span>
+                    </div>   
+                </div>  
+                            {/volist}
+                            <script>
+                                setTimeout(function() { $(".word").show(); }, 10000);
+                            </script>
+                        </div>              
+    
+
+    <div class="c1">
+        <div class="content">
+            <div class="result">
+                <span>比對結果</span>
+            </div>
+
+            <div class="ta">
+                    <table class="rwd-table">
+                            <tr>
+                              <th class="number">編號</th>
+                              <th>直播關鍵字</th>
+                              <th>消費者</th>
+                              <th>比對比率</th>
+                              <th>狀態</th>
+                            </tr>
+                            
+                            {volist name="goods" id="pvo2" empty=""}
+                            <tr data-toggle="collapse" data-target="#list" class="bbb">
+                              <td data-th="編號">1</td>
+                               {volist name="jieba" id="pvo" empty=""}
+                              <td data-th="直播關鍵字" class="keyword">
+                                <span class="round">{$pvo.extwo}</span>
+                                <span class="round">{$pvo.exthree}</span>
+                                <span class="round">{$pvo.exfive}</span>
+                                <span class="round">{$pvo.exten}</span>
+                                <span class="round">{$pvo.exseventeen}</span>
+                              </td>
+                              {/volist}
+                              <td data-th="消費者" class="pic">
+                                <img src="__PUBLIC__/image/pic.jpg">
+                                美美
+                              </td>
+                              <td data-th="比對比率">100%</td>
+                              <td data-th="狀態"><button class="btn2" id="btn2" onclick="sentlink()">未購買</button></td>
+                            </tr>
+
+                            <tr id="list" class="collapse">
+                                <td><span>類型<br></span>{$pvo2.order_type}</td>
+                                <td><span>品牌<br></span>{$pvo2.order_brand}</td>
+                                <td><span>尺寸<br></span>{$pvo2.order_size}</td>
+                                <td><span>顏色<br></span>{$pvo2.order_color}</td>
+                                <td><span>金額<br></span>${$pvo2.order_price}</td>
+                            </tr>
+                            {/volist}
+                            <script>
+                                function color(){
+                                     if(document.getElementById("btn2").innerHTML=="已購買"){
+                                        document.getElementById("btn2").style.backgroundColor="#00A0FF";
+                                    }
+                                }
+
+
+                            </script>
+
+                            <!-- <tr data-toggle="collapse" data-target="#list2">
+                                <td data-th="編號">2</td>
+                                <td data-th="直播關鍵字" class="keyword">
+                                    <span>Nike</span>
+                                    <span>白色</span>
+                                    <span>上衣</span>
+                                    <span>500元</span>
+                                </td>
+                                <td data-th="消費者" class="pic">
+                                    <img src="__PUBLIC__/image/pic.jpg">
+                                    小明
+                                </td>
+                                <td data-th="比對比率">80%</td>
+                                <td data-th="狀態"><button class="btn3">未購買</button></td>
+                            </tr>
+
+                            <tr id="list2" class="collapse">
+                                <td data-th="類型">衣服</td>
+                                <td data-th="品牌">Nike</td>
+                                <td data-th="尺寸">S</td>
+                                <td data-th="顏色">白色</td>
+                                <td data-th="金額">$1000</td>
+                            </tr>
+
+                            <tr data-toggle="collapse" data-target="#list3">
+                                <td data-th="編號">3</td>
+                                <td data-th="直播關鍵字" class="keyword">
+                                    <span>Nike</span>
+                                    <span>白色</span>
+                                    <span>上衣</span>
+                                    <span>500元</span>
+                                </td>
+                                <td data-th="消費者" class="pic">
+                                    <img src="__PUBLIC__/image/pic.jpg">
+                                    小明
+                                </td>
+                                <td data-th="比對比率">50%</td>
+                                <td data-th="狀態"><button class="btn2">已購買</button></td>
+                            </tr>
+
+                            <tr id="list3" class="collapse">
+                                <td data-th="類型">衣服</td>
+                                <td data-th="品牌">Nike</td>
+                                <td data-th="尺寸">S</td>
+                                <td data-th="顏色">白色</td>
+                                <td data-th="金額">$1000</td>
+
+                                <td><span>類型<br></span>衣服</td>
+                                <td><span>品牌<br></span>Nike</td>
+                                <td><span>尺寸<br></span>S</td>
+                                <td><span>顏色<br></span>白色</td>
+                                <td><span>金額<br></span>$1000</td>
+                            </tr> -->
+                          </table>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        setTimeout(function() { $(".bbb").show(); }, 17000);
+    </script>
+</body>
+</html>
+{/block}
+
+{block name="js"}
+<script>
+
+function sentlink(){
+    
+    $.ajax({
+
+type:"GET",//or POST
+url:'https://cb5bf200.ap.ngrok.io/sentlink',
+                   //  (or whatever your url is)
+// data:{data1:var1},
+//can send multipledata like {data1:var1,data2:var2,data3:var3
+//can use dataType:'text/html' or 'json' if response type expected 
+//success:
+       // process on data
+       //alert("ok ")
+
+})
+}
+</script>
+{/block}

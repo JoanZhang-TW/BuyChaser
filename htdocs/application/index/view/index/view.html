@@ -1,0 +1,373 @@
+{extend name="Public:header" /}
+{block name="content"}
+<html>
+<head>
+    <meta charset="utf-8">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+TC&display=swap" rel="stylesheet">
+    
+    <style>
+        html{
+            height: 100%;
+            background-color: white;
+            overflow-y: hidden;
+        }
+
+        body{
+            font-family: 'Noto Sans TC', sans-serif;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        .ig{
+            margin-top: 1%;
+            height: 10%;
+        }
+
+        .pic{
+            padding-top: 1%;
+            margin-left: 4%;
+            overflow: scroll;
+            display: inline-block;
+            white-space: nowrap;
+            width: 82%;
+            overflow-y: hidden;
+            overflow-x: hidden;
+        }
+
+        .ab{
+            /* float: left; */
+            border-radius: 50%;
+            width: 6.5%;
+            margin-left: 3%;
+            border: 3px solid #8a3ab8;
+            padding: 0.2%;
+        }
+
+        .ab:first-child{
+            margin-left: 0%;
+        }
+
+        .search{
+            background-color:  #f1ede6;
+            width: 30%;
+            margin-top: 3%;
+            padding-top: 0.4%;
+            padding-bottom: 0.4%;
+            margin-left: 4%;
+            border-radius: 25px;
+            clear: both;
+        }
+
+        .search i{
+            padding: 1% 3% 1% 3%;
+        }
+
+        .search input{
+            width: 85%;
+            background-color: inherit;
+            border: none;
+            outline: none;
+        }
+
+        .sell_title{
+            font-size: 24px;
+            margin-left: 4%;
+            margin-top: 1.5%;
+            margin-bottom: 1%;
+            letter-spacing: 1px;
+            color: dimgray;
+            font-weight: bold;
+        }
+
+        .sell{
+            margin-left: 4%;
+            margin-top: 0%;
+            color: dimgray;
+            font-weight: bold;
+            letter-spacing: 3px;
+            overflow: scroll;
+            display: inline-block;
+            white-space: nowrap;
+            width: 82%;
+            overflow-y: hidden;
+            overflow-x: hidden;
+        }
+
+        .sell_good{
+            background-color: #ffedcc;
+            width: 15%;
+            height: 120px;
+            border-radius: 25px;
+            display: inline-block;
+            white-space: nowrap;
+            margin-right: 2%;
+            padding-bottom: 2%;
+        }
+
+        .sell_good img{
+            width: 25%;
+            border-radius: 50%;
+            margin-left: 5%;
+            margin-top: 5%;
+            margin-bottom: 5%;
+        }
+
+        .sell_good span{
+            margin-left: 10%;
+            font-size: 18px;
+        }
+
+        .sell_good .num{
+            font-size: 36px;
+            margin-left: 13%;
+        }
+
+        .sell_good .fa-shopping-bag{
+            font-size: 22px;
+            margin-left: 5%;
+        }
+
+        .sell2{
+            margin-left: 4%;
+            margin-top: 1%;
+            clear: both;
+            color: dimgray;
+            font-weight: bold;
+            letter-spacing: 3px;
+        }
+
+        .seller{
+            background-color:#f7d1ab;
+            width: 40%;
+            border-radius: 25px;
+            float: left;
+            margin-right: 3%;
+            margin-bottom: 2%;
+            font-size: 20px;
+        }
+
+        .seller .seller_name img{
+            width: 10%;
+            border-radius: 50%;
+            margin-left: 5%;
+            margin-right: 5%;
+            margin-top: 5%;
+            margin-bottom: 5%;
+        }
+
+        .seller .seller_img{
+            margin-left: 5%;
+            margin-bottom: 10%;
+        }
+
+        .seller .seller_img img{
+            width: 43%;
+            border-radius: 15px;
+            margin-right: 5%;
+        }
+
+        @media(max-width: 480px){
+            .pic{
+                margin-top: 2%;
+                margin-left: 0%;
+                width: 88%;
+                overflow-x: scroll;
+            }
+            
+            .ab{
+                width: 15.5%;
+                margin-left: 3%;
+                margin-bottom: 2%;
+            }
+
+            .ab:first-child{
+                margin-left: 3%;
+            }
+
+            .search{
+                width: 65%;
+                margin-top: 8%;
+                margin-left: 3%;
+            }
+
+            .search i{
+                padding: 1% 3% 1% 3%;
+            }
+
+            .search input{
+                width: 85%;
+                background-color: inherit;
+                border: none;
+                outline: none;
+            }
+
+            .sell_title{
+                font-size: 26px;
+                margin-left: 3%;
+                margin-top: 2.5%;
+                margin-bottom: 2%;
+                letter-spacing: 0px;
+            }
+
+            .sell{
+                margin-left: 3%;
+                margin-top: 0%;
+                letter-spacing: 3px;
+                overflow-x: scroll;
+                width: 83%;
+            }
+
+            .sell_good{
+                width: 47%;
+                margin-right: 5%;
+                margin-bottom: 5%;
+            }
+
+            .sell2{
+                margin-left: 3%;
+                margin-top: 1%;
+            }
+
+            .seller{
+                width: 85%;
+                border-radius: 25px;
+                margin-right: 0%;
+                margin-bottom: 5%;
+                clear: both;
+            }
+
+            .seller .seller_name img{
+                width: 12%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="ig">
+        <div class="pic">
+            <img class="ab" src="__PUBLIC__/image/usa.jpg">
+            <img class="ab" src="__PUBLIC__/image/huang.jpg">
+            <img class="ab" src="__PUBLIC__/image/hu.jpg">
+            <img class="ab" src="__PUBLIC__/image/ni.jpg">
+            <img class="ab" src="__PUBLIC__/image/lucy.jpg">
+            <img class="ab" src="__PUBLIC__/image/xuan.jpg">
+            <img class="ab" src="__PUBLIC__/image/huang2.jpg">
+            <img class="ab" src="__PUBLIC__/image/harper.jpg">
+            <img class="ab" src="__PUBLIC__/image/kevin.jpg">
+            <img class="ab" src="__PUBLIC__/image/sandy.jpg">
+            <img class="ab" src="__PUBLIC__/image/shan.jpg">
+            <img class="ab" src="__PUBLIC__/image/yao.jpg">
+        </div>
+    </div>
+
+    <div class="search">
+        <i class="fas fa-search"></i><input type="text" placeholder="Search">
+    </div>
+
+    <div class="sell_title">
+        代購商品
+    </div>
+
+    <div class="sell">
+        <div class="sell_good">
+            <img src="__PUBLIC__/image/world.jpg"><span>T.World</span>
+            <br>
+            <span class="num">8</span><i class="fas fa-shopping-bag"></i>
+        </div>
+    
+        <div class="sell_good">
+            <img src="__PUBLIC__/image/jessie.jpg"><span>Jessie</span>
+            <br>
+            <span class="num">20</span><i class="fas fa-shopping-bag"></i>
+        </div>
+    
+        <div class="sell_good">
+            <img src="__PUBLIC__/image/andrew.jpg"><span>Andrew</span>
+            <br>
+            <span class="num">15</span><i class="fas fa-shopping-bag"></i>
+        </div>
+
+        <div class="sell_good">
+            <img src="__PUBLIC__/image/chi.jpg"><span>CHI CHI</span>
+            <br>
+            <span class="num">12</span><i class="fas fa-shopping-bag"></i>
+        </div>
+
+        <!-- <div class="sell_good">
+            <img src="__PUBLIC__/image/tai.jpg"><span>tessin</span>
+            <br>
+            <span class="num">10</span><i class="fas fa-shopping-bag"></i>
+        </div> -->
+
+        <div class="sell_good">
+            <img src="__PUBLIC__/image/alley.jpg"><span>Alley</span>
+            <br>
+            <span class="num">8</span><i class="fas fa-shopping-bag"></i>
+        </div>
+
+        <div class="sell_good">
+            <img src="__PUBLIC__/image/mine.jpg"><span>Mine's</span>
+            <br>
+            <span class="num">5</span><i class="fas fa-shopping-bag"></i>
+        </div>
+
+        <div class="sell_good">
+            <img src="__PUBLIC__/image/um.jpg"><span>UM韓</span>
+            <br>
+            <span class="num">10</span><i class="fas fa-shopping-bag"></i>
+        </div>
+    </div>
+
+    <div class="sell_title">
+        熱門代購者
+    </div>
+    
+    <div class="sell2">
+        <div class="seller">
+            <div class="seller_name">
+                <img src="__PUBLIC__/image/elieen.jpg"><span>Elieen</span>
+            </div>
+    
+            <div class="seller_img">
+                <img src="__PUBLIC__/image/shoes1.jpg">
+                <img src="__PUBLIC__/image/shoes2.jpg">
+            </div>
+        </div>
+    
+        <div class="seller">
+            <div class="seller_name">
+                <img src="__PUBLIC__/image/cutie.jpg"><span>Cutie&korea</span>
+            </div>
+    
+            <div class="seller_img">
+                <img src="__PUBLIC__/image/shoes.jpg">
+                <img src="__PUBLIC__/image/nike_c.jpg">
+            </div>
+        </div>
+    
+        <div class="seller">
+            <div class="seller_name">
+                <img src="__PUBLIC__/image/muse.jpg"><span>Muse.i</span>
+            </div>
+    
+            <div class="seller_img">
+                <img src="__PUBLIC__/image/gap_c.jpg">
+                <img src="__PUBLIC__/image/pants.jpg">
+            </div>
+        </div>
+
+        <div class="seller">
+            <div class="seller_name">
+                <img src="__PUBLIC__/image/robin.jpg"><span>RobinMay</span>
+            </div>
+        
+            <div class="seller_img">
+                <img src="__PUBLIC__/image/guccijacket.jpg">
+                <img src="__PUBLIC__/image/guccitshirt.jpg">
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+{/block}

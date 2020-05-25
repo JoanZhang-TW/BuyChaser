@@ -1,0 +1,229 @@
+
+{extend name="Public:header" /}
+{block name="css"}
+<style>
+	.file {
+		visibility: hidden;
+		/*position: absolute;*/
+	}
+</style>
+{/block}
+
+
+{block name="content"}
+
+
+
+
+<div class="container-fluid px-lg-5 py-6 mt-5 pt-5 bg-white">
+	 <!--Header-->
+ 	<div class="text-center">
+			<h1 class="dark-grey-text mb-5"><strong>代購商品修改</strong></h1>
+	</div>
+	<a class="btn btn-blue " href="{:url('Index/management_buy')}"  style="font-size: 1.2rem;margin-left:10%;">回上一頁</a>
+		<div class="row">
+
+				<!--Grid column-->
+				<div class="col-md-10 my-3 text-left" style="margin-left:10%;">
+						
+					<div class="card">
+						<div class="card-body">
+							{volist name="goods" id="pvo" empty=""}
+							<!-- Form -->
+							<form class="text-center" style="color: #757575;" action="{:url('Index/do_modify')}" enctype="multipart/form-data" method="post">
+								<input type="hidden" name="ud_id" value="{$pvo.id}">
+								<div class="form-row">
+									<div class="col">
+										<!--img src="https://placehold.it/225x150" id="preview" class="img-thumbnail"-->
+										<img src="{$pvo.goods_img}" alt="" width="50%" id="preview" class="img-thumbnail">
+									</div>
+									<div class="col">
+											<input type="file" name="image" class="file" accept="image/*">
+											<div class="input-group my-5">
+												  <input type="text" class="form-control" disabled placeholder="上傳商品照" id="file">
+												  <div class="input-group-append">
+													<button type="button" class="browse btn btn-primary">Browse...</button>
+												  </div>
+											</div>
+									</div>
+								</div>
+	
+								<div class="form-row">
+										<div class="col">
+											<!-- First name -->
+											<div class="md-form">
+												<input type="text" id="name" class="form-control" name="goods_name" value="{$pvo.goods_name}">
+												<label for="name" class="active">商品名稱</label>
+											</div>
+										</div>
+								</div>
+								<div class="form-row">
+										<div class="col">
+												<label class="active">選擇國家</label>
+												<select class="browser-default custom-select mb-4" name="goods_lo">
+														<option value="" disabled="" selected="">選擇國家</option>
+														{volist name="country" id="cvo" empty=""}
+																<option value="{$cvo.name}" <?php if($cvo['name'] == $pvo['goods_lo'])echo 'selected' ?> >{$cvo.name}</option>
+														{/volist}
+												</select>
+										</div>
+										<div class="col">
+												<label class="active">選擇商品品牌</label>
+												<select class="browser-default custom-select mb-5" name="goods_brand">
+														<option value="" disabled="" selected="">選擇品牌</option>
+														{volist name="brand" id="cvo" empty=""}
+																<option value="{$cvo.name}" <?php if($cvo['name'] == $pvo['goods_brand'])echo 'selected' ?> >{$cvo.name}</option>
+														{/volist}
+												</select>
+										</div>
+								</div>
+									<div class="form-row">
+											<div class="col">
+												<!-- First name -->
+												<div class="md-form">
+													<input type="text" id="price" class="form-control" value="{$pvo.goods_price}" name="goods_price">
+													<label for="price" class="active">價格</label>
+												</div>
+											</div>
+											<div class="col">
+												<!-- Last name -->
+												<div class="md-form">
+													<input type="text" id="color" class="form-control" value="{$pvo.goods_color}" name="goods_color">
+													<label for="color"  class="active">顏色</label>
+												</div>
+											</div>
+									</div>
+									
+									
+									<div class="md-form">
+											<input class="form-control" id="input-char-counter" type="text" length="10" value="{$pvo.goods_des}" name="goods_des">
+											
+											<label for="input-char-counter" class="active">商品描述</label>
+										<span class="character-counter" style="float: right; font-size: 12px; height: 1px;"></span>
+									</div>
+						
+									<!-- Sign in button -->
+									<div class="form-row">
+										<button class="btn btn-blue "  type="submit" style="font-size: 1.2rem">修改</button>
+									</div>
+											
+							</form>
+							<!-- Form -->
+							{/volist}
+  
+						</div>
+  
+					</div>
+  
+				</div>
+				<!--Grid column-->
+  
+			</div>
+
+			<div class="row">
+
+				<!--Grid column-->
+				<div class="col-md-10 my-3 text-left" style="margin-left:10%;">
+						
+					<div class="card">
+						<div class="card-body">
+							<!-- order table -->
+							<div class="table-responsive">
+  
+								<table class="table product-table">
+  
+									<!-- Table head -->
+									<thead class="blue text-white">
+										<tr>
+											<th></th>
+											<th class="font-weight-bold  h4 p-1">
+												<strong>訂購人</strong>
+											</th>
+											<th class="font-weight-bold  h4 p-1">
+												<strong>數量</strong>
+											</th>
+											<th></th>
+											<th class="font-weight-bold  h4 p-1">
+												<strong>總價</strong>
+											</th>
+											<th class="font-weight-bold  h4 p-1">
+												<strong>購買時間</strong>
+											</th>
+											<th></th>
+											<th></th>
+										</tr>
+									</thead>
+									<!-- /.Table head -->
+  
+									<!-- Table body -->
+									<tbody>
+  
+										<!-- First row -->
+										{volist name="order_record" id="pvo" empty="無紀錄"}
+										<tr id="{$pvo.id}">
+											<th scope="row">
+											</th>
+											<td>
+												<h5 class="mt-3">
+													<strong>{$pvo.o_user}</strong>
+												</h5>
+											</td>
+											<td>{$pvo.o_number}</td>
+											<td></td>
+											<td>${$pvo.o_number * $goods.0.goods_price}</td>
+											<td>{$pvo.creat_time}</td>
+											<td>
+												
+											</td>
+											<td>
+							
+												
+											</td>
+										</tr>
+										{/volist}
+									</tbody>
+									<!-- /.Table body -->
+  
+								</table>
+  
+							</div>
+							<!-- /.order table -->
+  
+						</div>
+  
+					</div>
+  
+				</div>
+				<!--Grid column-->
+  
+			</div>
+</div>
+
+{/block}
+
+
+
+
+{block name="js"}
+
+<script>
+	$(document).on("click", ".browse", function() {
+	var file = $(this).parents().find(".file");
+	file.trigger("click");
+	});
+	$('input[type="file"]').change(function(e) {
+	var fileName = e.target.files[0].name;
+	$("#file").val(fileName);
+
+	var reader = new FileReader();
+	reader.onload = function(e) {
+		// get loaded data and render thumbnail.
+		document.getElementById("preview").src = e.target.result;
+	};
+	// read the image file as a data URL.
+	reader.readAsDataURL(this.files[0]);
+	});
+
+</script>
+
+{/block}

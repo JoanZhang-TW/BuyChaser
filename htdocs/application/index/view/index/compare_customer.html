@@ -1,0 +1,455 @@
+{extend name="Public:header" /}
+{block name="content"}
+<html>
+<head>
+  <meta charset="utf-8">
+  <style>
+    html{
+        background-color: #fff;
+    }
+
+    body{
+        background-color: #fff;
+    }
+
+    .t{
+        font-size: 28px;
+        padding-left: 9%;
+        background-color: #fff;
+        color:#466900;
+        padding-top: 3%;
+        float: left;
+    }
+
+    .link{
+        padding-top: 3.7%;
+        padding-left: 73.5%;
+    }
+
+    .link a{
+        color: black;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    .link span{
+        margin-left: 2%;
+        margin-right: 2%;
+    }
+
+    .type input{
+        outline: none;
+        width: 94%;
+        border: 0;
+        font-size: 14px;
+    }
+
+    .search{
+        margin-left: 9%;
+        background-color: #aaaaaa;
+        color: white;
+        text-align: center;
+        margin-top: 2.3%;
+        padding: 0.3% 0 0.3% 0;
+        border-radius: 6px;
+        width: 6.8%;
+        margin-bottom: 2%;
+        cursor: pointer;
+    }
+
+    .search span{
+        margin-right: 10%;
+    }
+
+    .search_all{
+        margin-top: 1%;
+        margin-left: 9%;
+        clear: both;
+        width: 75%;
+    }
+
+    .type{
+        width: 28%;
+        padding-bottom: 0.5%;
+        border-bottom: 2px solid gray;
+        float: left;
+        margin-right: 5%;
+        margin-bottom: 4%;
+    }
+
+    /* .card_all{
+        background-color: white;
+        margin-left: 9%;
+        clear: both;
+    }
+
+    .card{
+        float: left;
+        width: 24%;
+        margin-left: 3%;
+        margin-top: 4%;
+        box-shadow: none; 
+    }
+
+    .card:hover{
+        transform: translateY(-5px);
+    }
+
+    .card .card-img-top{
+        max-height: 180px;
+        min-height: 180px;
+    }
+
+    .card .card-body{
+        padding-top: 5%;
+        padding-left: 0%;
+        padding-bottom: 5%;
+    }
+
+    .card .card-body span{
+        color: black;
+        font-size: 14px;
+        font-weight: normal;
+        margin-left: 5%;
+    }
+
+    .card .card-body span:first-child{
+        color: black;
+        font-size: 16px;
+        font-weight: normal;
+    }
+
+    .card .btn{
+        width: 15%;
+        padding: 2%;
+        border-radius: 5px;
+        box-shadow: none;
+        margin-left: 85%;
+    } */
+
+    .compare_title{
+        width: 80%;
+        margin-left: 0%;
+        clear: both;
+    }
+
+    .compare_title .name_2{
+        float: left;
+        font-size: 18px;
+        margin-left: 5.5%;
+        width: 10%;
+    }
+
+    .compare_title .live_name_2{
+        float: left;
+        font-size: 18px;
+        margin-left: 4.5%;
+        width: 10%;
+    }
+
+    .compare_title .name{
+        font-size: 18px;
+        margin-left: 28.5%;
+        float: left;
+        width: 10%;
+    }
+
+    .compare_title .live_name{
+        font-size: 18px;
+        margin-left: 73%;
+        width: 10%;
+    }
+
+    /* .name i, .name_2 i, .live_name i, .live_name_2 i{
+        margin-left: 5%;
+    } */
+
+    .compare_all{
+        width: 40%;
+        height: 115px;
+        background-color: #f4f4f4;
+        /* border: 1px solid black; */
+        margin-left: 2.5%;
+        margin-top: 1%;
+        padding-top: 1%;
+        margin-bottom: 2%;
+        border-radius: 15px;
+        float: left;
+    }
+
+    .compare_all button{
+        background-color: #dddddd;
+    }
+
+    .compare_all .name{
+        float: left;
+        width: 15%;
+        margin-top: 3%;
+        margin-left: 6%;
+    }
+
+    .compare_all .name img{
+        width: 50%;
+        border-radius: 50%;
+        margin-right: 2%;
+    }
+
+    .compare_all .live_name{
+        width: 58%;
+        margin-left: 5%;
+        float: left;
+    }
+
+    .compare_all .live_name img{
+        width: 40%;
+        min-height: 90px;
+        max-height: 90px;
+        margin-right: 2%;
+    }
+
+    .compare_all .look{
+        float: left;
+        margin-left: 0%;
+        margin-top: 6.5%;
+    }
+
+    .compare_all .look button{
+        border: 0;
+        border-radius: 6px;
+    }
+
+    @media(max-width: 480px){
+        .link{
+            padding-top: 2%;
+            padding-left: 9.5%;
+            clear: both;
+        }
+
+        .type input{
+            width: 92%;
+        }
+
+        .search{
+            padding: 0.7% 0 0.7% 0;
+            width: 23%;
+            margin-bottom: 4%;
+        }
+
+        .search_all{
+            width: 90%;
+        }
+
+        .type{
+            width: 70%;
+            padding-bottom: 1.5%;
+            margin-bottom: 6%;
+        }
+
+        /* .card{
+            clear: both;
+            width: 70%;
+            margin-left: 5%;
+        } */
+
+        .compare_title{
+            width: 80%;
+            margin-left: 0%;
+            clear: both;
+        }
+
+        .compare_title .name_2{
+            display: none;
+        }
+
+        .compare_title .live_name_2{
+            display: none;
+        }
+
+        .compare_title .name{
+            font-size: 18px;
+            margin-left: 5%;
+            float: left;
+            width: 20%;
+        }
+
+        .compare_title .live_name{
+            font-size: 18px;
+            margin-left: 9.5%;
+            float: left;
+            width: 20%;
+        }
+
+        .compare_all{
+            width: 90%;
+            height: 73px;
+            background-color: #f4f4f4;
+            /* border: 1px solid black; */
+            margin-left: 0%;
+            margin-top: 5%;
+            padding-top: 2.5%;
+            margin-bottom: 2%;
+            border-radius: 15px;
+            clear: both;
+        }
+
+        .compare_all .name{
+            float: left;
+            width: 20%;
+            margin-top: 0%;
+            margin-left: 6%;
+        }
+
+        .compare_all .name img{
+            width: 45%;
+            border-radius: 50%;
+            margin-right: 1%;
+        }
+
+        .compare_all .live_name{
+            width: 47%;
+            margin-left: 2%;
+            float: left;
+        }
+
+        .compare_all .live_name img{
+            width: 32%;
+            min-height: 55px;
+            max-height: 55px;
+            margin-right: 1%;
+        }
+
+        .compare_all .look{
+            float: left;
+            margin-left: 0%;
+            margin-top: 4.5%;
+        }
+
+        .compare_all .look button{
+            border: 0;
+            border-radius: 6px;
+        }
+    }
+  </style>
+</head>
+<body>
+    <div class="t">
+        代看直播比對
+    </div>
+        
+    <div class="link">
+        <a href="{:url('Index/view')}"><i class="far fa-home"></i></a><span>></span><a href="{:url('Index/compare_customer')}">代看直播比對</a>
+    </div>
+    
+    <div class="search" data-toggle="collapse" data-target="#search">
+        <span>search</span><i class="far fa-search"></i>
+    </div>
+        
+    <div class="search_all collapse" id="search">
+        <div class="type">
+            <input type="text" placeholder="代購者">
+            <i class="fas fa-sort-down"></i>
+        </div>
+        
+        <div class="type">
+            <input type="text" placeholder="直播名稱">
+            <i class="fas fa-sort-down"></i>
+        </div>
+    </div>
+
+    <div class="compare_title">
+        <div class="name_2">
+            <span>代購者</span>
+        </div>
+
+        <div class="live_name_2">
+            <span>直播</span>
+        </div>
+
+        <div class="name">
+            <span>代購者</span>
+        </div>
+    
+        <div class="live_name">
+            <span>直播</span>
+        </div>
+    </div>
+
+    <div class="compare_all">
+        <div class="name">
+            <img src="__PUBLIC__/image/ting2.jpg"><br>
+            <span style="margin-left: 5%;">婷婷</span>
+        </div>
+
+        <div class="live_name">
+            <img src="__PUBLIC__/image/live3.png">
+            <span>代購</span>
+        </div>
+
+        <div class="look">
+            <button onclick="location.href='{:url('Index/compare_customer_2')}'">查看比對</button>
+        </div>
+    </div>
+
+    <div class="compare_all">
+        <div class="name">
+            <img src="__PUBLIC__/image/cutie.jpg">
+            <span>Cutie</span>
+        </div>
+    
+        <div class="live_name">
+            <img src="__PUBLIC__/image/live_c.jpg">
+            <span>上衣代購</span>
+        </div>
+    
+        <div class="look">
+            <button onclick="location.href='{:url('Index/compare_customer_2')}'">查看比對</button>
+        </div>
+    </div>
+
+    <div class="compare_all">
+        <div class="name">
+            <img src="__PUBLIC__/image/muse.jpg">
+            <span>Muse.i</span>
+        </div>
+    
+        <div class="live_name">
+            <img src="__PUBLIC__/image/live_c2.jpg">
+            <span>衣服代購</span>
+        </div>
+        
+        <div class="look">
+            <button onclick="location.href='{:url('Index/compare_customer_2')}'">查看比對</button>
+        </div>
+    </div>
+
+    <!-- <div class="card_all">
+        <div class="card">
+            <img src="__PUBLIC__/image/live.jpg" class="card-img-top">
+            <div class="card-body">
+                <span>直播名稱 ： 123</span><br>
+                <span>代購者 ： 小明</span><br>
+                <a href="compare_customer_2" class="btn btn-primary">查看</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="__PUBLIC__/image/live.jpg" class="card-img-top">
+            <div class="card-body">
+                <span>直播名稱 ： Nike上衣代購</span><br>
+                <span>代購者 ： 小明</span><br>
+                <a href="#" class="btn btn-primary">查看</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="__PUBLIC__/image/live.jpg" class="card-img-top">
+            <div class="card-body">
+                <span>直播名稱 ： Nike上衣代購</span><br>
+                <span>代購者 ： 小明</span><br>
+                <a href="#" class="btn btn-primary">查看</a>
+            </div>
+        </div>
+    </div> -->
+</body>
+</html>
+{/block}

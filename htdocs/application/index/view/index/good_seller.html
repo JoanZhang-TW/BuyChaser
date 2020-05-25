@@ -1,0 +1,316 @@
+{extend name="Public:header" /}
+{block name="content"}
+<html>
+<head>
+  <meta charset="utf-8">
+  <style>
+    html{
+        background-color: white;
+    }
+
+    body{
+        background-color: white;
+    }
+
+    .t{
+        font-size: 28px;
+        padding-left: 9%;
+        background-color: #fff;
+        color:#466900;
+        padding-top: 3%;
+        float: left;
+    }
+
+    .link{
+         padding-top: 3.7%;
+        padding-left: 76%;
+    }
+
+    .link a{
+        color: black;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    .link span{
+        margin-left: 2%;
+        margin-right: 2%;
+    }
+
+    .type input{
+        outline: none;
+        width: 94%;
+        border: 0;
+        font-size: 14px;
+    }
+
+    .search{
+        margin-left: 9%;
+        background-color: #aaaaaa;
+        color: white;
+        text-align: center;
+        margin-top: 2.3%;
+        padding: 0.3% 0 0.3% 0;
+        border-radius: 6px;
+        width: 6.8%;
+        margin-bottom: 1%;
+        cursor: pointer;
+    }
+
+    .search span{
+        margin-right: 10%;
+    }
+
+    .search_all{
+        margin-top: 1%;
+        margin-left: 9%;
+        clear: both;
+        width: 75%;
+    }
+
+    .type{
+        width: 28%;
+        padding-bottom: 0.5%;
+        border-bottom: 2px solid gray;
+        float: left;
+        margin-right: 5%;
+        margin-bottom: 4%;
+    }
+
+    .card_all{
+        background-color: white;
+        margin-left: 9%;
+        clear: both;
+    }
+
+    .card{
+        float: left;
+        width: 20%;
+        margin-left: 6%;
+        margin-top: 3%;
+        border-radius: 1.5em;
+        background-color: #f1dbc3;
+        box-shadow: none;
+    }
+
+    .card .card-img-top{
+        max-height: 170px;
+        min-height: 170px;
+        border-radius: 1.5em;
+        width: 85%;
+        margin-left: 8%;
+        margin-top: 20%;
+        transform: rotate(90deg);
+    }
+
+    .card .card-body{
+        padding-top: 15%;
+        padding-left: 8%;
+        padding-bottom: 3%;
+        padding-right: 0%;
+    }
+
+    .card .card-body span{
+        color: black;
+        font-size: 14px;
+        font-weight: normal;
+    }
+
+    .card .card-body span:first-child{
+        color: black;
+        font-size: 20px;
+        font-weight: normal;
+    }
+
+    .card .card-body .num{
+        float: left;
+        width: 30%;
+        margin-top: 2%;
+    }
+
+    .card .card-body .num i{
+        font-size: 10px;
+        background-color: #aaaaaa;
+        padding: 9%;
+        border-radius: 50%;
+        color: white;
+    }
+
+    .card .card-body .num i:hover{
+        background-color: dimgray;
+    }
+    
+    .card .card-body .num span{
+        margin-left: 12%;
+        margin-right: 12%;
+    }
+
+    .card .btn{
+        width: 35%;
+        padding: 2%;
+        border-radius: 5px;
+        box-shadow: none;
+        margin-left: 28%;
+        margin-top: 2%;
+        background-color: #f69e53;
+        color: white;
+    }
+
+    @media(max-width: 480px){
+        .link{
+            padding-top: 2%;
+            padding-left: 9.5%;
+            clear: both;
+        }
+
+        .type input{
+            width: 92%;
+        }
+
+        .search{
+            padding: 0.7% 0 0.7% 0;
+            width: 23%;
+            margin-bottom: 4%;
+        }
+
+        .search_all{
+            width: 90%;
+        }
+
+        .type{
+            width: 70%;
+            padding-bottom: 1.5%;
+            margin-bottom: 6%;
+        }
+
+        .card_all{
+            background-color: white;
+            margin-left: 0%;
+            clear: both;
+        }
+
+        .card{
+            /* clear: both; */
+            width: 40%;
+            margin-left: 3.5%;
+            margin-top: 5%;
+        }
+
+        .card .card-img-top{
+            max-height: 150px;
+            min-height: 150px;
+            border-radius: 1.5em;
+            width: 85%;
+            margin-left: 8%;
+            margin-top: 10%;
+            transform: rotate(360deg);
+        }
+
+        .card .card-body{
+            padding-top: 10%;
+        }
+
+        .card .card-body .num{
+            width: 38%;
+            margin-top: 2%;
+            clear: both;
+        }
+
+        .card .card-body .num i{
+            padding: 8%;
+        }
+        
+        .card .card-body .num span{
+            margin-left: 8%;
+            margin-right: 8%;
+        }
+
+        .card .btn{
+            width: 52%;
+            padding: 2%;
+            border-radius: 5px;
+            box-shadow: none;
+            margin-left: -37%;
+            margin-top: 25%;
+            background-color: #f69e53;
+            clear: both;
+        }
+    }
+  </style>
+</head>
+<body>
+    <div class="t">
+        商品管理
+    </div>
+        
+    <div class="link">
+        <a href="{:url('Index/view')}"><i class="far fa-home"></i></a><span>></span><a href="{:url('Index/good_customer')}">商品管理</a>
+    </div>
+
+    <div class="search" data-toggle="collapse" data-target="#search">
+        <span>search</span><i class="far fa-search"></i>
+    </div>
+            
+    <div class="search_all collapse" id="search">
+        <div class="type">
+            <input type="text" placeholder="商品名稱">
+            <i class="fas fa-sort-down"></i>
+        </div>
+            
+        <div class="type">
+            <input type="text" placeholder="尺寸">
+            <i class="fas fa-sort-down"></i>
+        </div>
+            
+        <div class="type">
+            <input type="text" placeholder="金額">
+            <i class="fas fa-sort-down"></i>
+        </div>
+    
+        <div class="type">
+            <input type="text" placeholder="期限">
+            <i class="fas fa-sort-down"></i>
+        </div>
+    </div>
+
+    <div class="card_all">
+        <!-- <div class="card">
+            <img src="__PUBLIC__/image/nike2.jpg" class="card-img-top">
+            <div class="card-body">
+                <span>NIKE白色上衣</span><br>
+                <span>尺寸 : M</span><br>
+                <span>金額 : $500</span><br>
+                <span>期限 : 2019-10-10</span><br>
+                <div class="num">
+                    <i class="fas fa-minus"></i></span><span>5</span><i class="fas fa-plus"></i>
+                </div>
+                <a href="#" class="btn">加入購物車</a>
+            </div>
+        </div> -->
+
+        {volist name="goods" id="pvo" empty=""}
+        <div class="card" id="{$pvo.id}">
+            <img src="{$pvo.goods_img}" alt="" class="card-img-top">
+            <div class="card-body">
+                <span class="card-title">{$pvo.goods_name}</span><br>
+                <span>尺寸 : {$pvo.goods_size}</span><br>
+                <span>金額 : ${$pvo.goods_price}</span><br>
+                <span>期限 : {$pvo.goods_date}</span><br>
+                <div class="num">
+                    <i class="fas fa-minus"></i></span><span>1</span><i class="fas fa-plus"></i>
+                </div>
+                <a href="#" class="btn" onclick="cart()">加入購物車</a>
+            </div>
+        </div>
+            
+        {/volist}
+
+        <script>
+            function cart(){
+                document.getElementById("p1").setAttribute("data-count","1")
+            }
+        </script>
+    </div>  
+</body>
+</html>
+{/block}

@@ -1,0 +1,575 @@
+{extend name="Public:header" /}
+{block name="content"}
+<html>
+<head>
+    <meta charset="utf-8">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+TC&display=swap" rel="stylesheet">
+    <style>
+        html{
+            height: 100%;
+        }
+
+        body{
+            font-family: 'Noto Sans TC', sans-serif;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        .abc{
+            border-bottom: 1.5px solid #c8c8a9;
+        }
+
+        .abc:last-of-type{
+            border-bottom: 1.5px solid white;
+        }
+
+        .c1{
+            height: auto;
+            background-color: #fff;
+            padding-top: 2%;
+            clear: both;
+        }
+
+        .bar{
+            position: absolute;
+            top: 3%;
+            right: 3%;
+        }
+
+        .t{
+            font-size: 28px;
+            padding-left: 9%;
+            background-color: #fff;
+            color:#466900;
+            padding-top: 3%;
+            float: left;
+        }
+
+        .link{
+            padding-top: 3.7%;
+            padding-left: 73.5%;
+        }
+
+        .link a{
+            color: black;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .link span{
+            margin-left: 2%;
+            margin-right: 2%;
+        }
+
+        .content{
+            background-color: #fff;
+            margin-left: 9%;
+            width: 75%;
+        }
+        
+        .good_name{
+            float: left;
+            font-size: 24px;
+            font-weight: bold;
+            color:#466900;
+            margin-right: 3%;
+            margin-left: 5%;
+            margin-top: 2%;
+            clear: both;
+        }
+
+        .ta{
+            display: flex;
+            justify-content: center;
+            margin-top: 0%;
+        }
+
+        .ta table{
+            width: 100%;
+            text-align: center;
+            overflow: auto;
+        }
+
+        .rwd-table {
+		 	overflow: hidden;
+		}
+            
+		.rwd-table th, 
+		.rwd-table td {
+			margin: 0.5em 1em;
+        }
+            
+		.rwd-table {
+			min-width: 100%;
+		}
+
+		.rwd-table th {
+			display: none;
+		}
+
+		.rwd-table td {
+            display: block;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+		.rwd-table td:before {
+			content: attr(data-th) " : ";
+			width: 6.5em;
+            display: inline-block;
+            color:#f69e53;
+		}
+
+		.rwd-table th, .rwd-table td {
+            text-align: center;
+            font-family: 'Noto Sans TC', sans-serif;
+        }
+            
+        .rwd-table th{
+            color: white;
+        }
+
+		.rwd-table th, .rwd-table td:before {
+            font-weight: bold;
+            font-size: 18px;
+            font-family: 微軟正黑體;
+        }
+
+        .rwd-table tr:first-child{
+            border-left: 0;
+            background-color: #f69e53;
+            border-bottom: none;
+        }
+
+        .rwd-table tr:first-child:hover{
+            border-left: 0;
+            background-color: #f69e53;
+        }
+
+        .rwd-table tr{
+            /* border-left: 5px solid white; */
+            /* border-bottom: 1.5px solid #c8c8a9; */
+            color:dimgray;
+        }
+
+        .rwd-table tr:last-child{
+             border-bottom: 0;
+        }
+
+        .rwd-table tr:hover{
+            background-color: #eaeaea;
+            /* border-left: 5px solid #c8c8a9; */
+        }
+
+        .rwd-table .btn1, .rwd-table .btn2, .rwd-table .btn3{
+            border: 0;
+            border-radius: 7px;
+            padding-top: 2px;
+            padding-bottom: 2px;
+            font-weight: bold;
+        }
+
+        .rwd-table .btn1{
+            background-color: #009A31;
+            line-height: 30px;
+        }
+
+        .rwd-table .btn2{
+            background-color: #DE3C3C;
+            color: white;
+            line-height: 30px;
+        }
+
+        .rwd-table .btn3{
+            background-color: #aaaaaa;
+            color:white;
+            line-height: 30px;
+        }
+
+        .rwd-table .pic{
+            width: 20%;
+        }
+
+        .rwd-table .pic img{
+            width: 20%;
+            border-radius: 50%;
+            margin-right: 3%;
+        }
+
+        .type input{
+            outline: none;
+            width: 94%;
+            border: 0;
+            font-size: 14px;
+        }
+
+        .search{
+            margin-left: -13%;
+            background-color: #aaaaaa;
+            color: white;
+            text-align: center;
+            margin-top: 2.3%;
+            padding: 0.3% 0 0.3% 0;
+            border-radius: 6px;
+            width: 6.8%;
+            margin-bottom: 2%;
+            cursor: pointer;
+            float: left;
+        }
+
+        .search span{
+            margin-right: 10%;
+        }
+
+        .search_all{
+            margin-top: 1%;
+            margin-left: 9%;
+            clear: both;
+            width: 75%;
+        }
+
+        .type{
+            width: 28%;
+            padding-bottom: 0.5%;
+            border-bottom: 2px solid gray;
+            float: left;
+            margin-right: 5%;
+            margin-bottom: 4%;
+        }
+
+        .delete.option{
+            /* clear: both; */
+            margin-left: -5%;
+            margin-top: 2.4%;
+            width: 8%;
+            text-align: center;
+            float: left;
+        }
+
+        .delete.option button{
+            border: 0;
+            border-radius: 7px;
+            padding:3%;
+            color: black;
+        }
+
+        .fa-pencil-alt{
+            background-color: #dddddd;
+            padding: 8%;
+            border-radius: 25px;
+        }
+
+        .fa-times{
+            background-color:#dddddd ;
+            padding: 8% 12% 8% 12%;
+            border-radius: 25px;
+        }
+
+        .pagination{
+            display: flex;
+            justify-content: center;
+            padding-top: 5%;
+            background-color: white;
+        }
+
+        .pagination .page-link{
+            color: black;
+        }
+
+        .good_type{
+            margin-bottom: 5%;
+            text-align: center;
+            margin-left: 10%;
+        }
+
+        .good_type:first-child{
+            margin-top: 5%;
+        }
+
+        .good_type span{
+            font-size: 18px;
+            color: #f9802d;
+            float: left;
+            margin-right: 10%;
+        }
+
+        .good_type input{
+            width: 60%;
+        }
+
+        .modal-title{
+            color: #466900;
+            
+        }
+
+        .modal-footer button{
+            position: relative;
+            right: 15%;
+            border: 0;
+            color: white;
+            background-color: black;
+            border-radius: 7px;
+            width: 10%;
+            height: 30px;
+        }
+
+        @media(max-width: 480px){
+            .link{
+                padding-top: 2%;
+                padding-left: 9.5%;
+                clear: both;
+            }
+            
+            .c1{
+                padding-top: 5%;
+            }
+
+            .rwd-table td{
+                text-align: left;
+            }
+
+            .rwd-table .pic{
+                width: 100%;
+            }
+
+            .rwd-table .pic img{
+                width: 10%;
+                border-radius: 50%;
+                margin-right: 3%;
+            }
+
+            .rwd-table .g_n{
+                display: none;
+            }
+
+            /* .rwd-table .ratio{
+                width: 100%;
+            } */
+
+            .rwd-table .progress{
+                white-space: nowrap;
+                display: inline-block;
+                width: 50%;
+                margin-left: -2%;
+            }
+
+            .type input{
+                width: 92%;
+            }
+
+            .search{
+                padding: 0.7% 0 0.7% 0;
+                width: 23%;
+                margin-bottom: 4%;
+                margin-left: 9%;
+                margin-top: 5%;
+            }
+
+            .search_all{
+                width: 90%;
+            }
+
+            .type{
+                width: 70%;
+                padding-bottom: 1.5%;
+                margin-bottom: 6%;
+            }
+            
+            .delete.option{
+                margin-left: 2%;
+                margin-top: 4.5%;
+                width: 30%;
+                text-align: center;
+            }
+
+            .delete.option button{
+                border: 0;
+                border-radius: 7px;
+                padding-top: 3%;
+                padding-bottom: 3%;
+                background-color:#7BB31A;
+            } 
+                    
+            .fa-pencil-alt{
+                padding: 3%;
+            }
+
+            .fa-times{
+                padding: 3% 4% 3% 4%;
+            }
+
+            .pagination{
+                padding-top: 10%;
+                padding-bottom: 10%;
+            }
+
+            .good_type{
+                margin-bottom: 10%;
+                text-align: center;
+            }
+
+            .good_type:first-child{
+                margin-top: 12%;
+            }
+
+            .modal-footer button{
+                position: relative;
+                right: 13%;
+                border: 0;
+                color: white;
+                background-color: black;
+                border-radius: 7px;
+                width: 25%;
+                height: 32px;
+            }
+        }
+
+        @media (min-width: 480px) {
+              
+            .rwd-table td:before {
+              display: none;
+            }
+            .rwd-table th, .rwd-table td {
+              display: table-cell;
+              padding: 0.25em 0.5em;
+            }
+            .rwd-table th:first-child, 
+            .rwd-table td:first-child {
+              padding-left: 0;
+            }
+            .rwd-table th:last-child, 
+            .rwd-table td:last-child {
+              padding-right: 0;
+            }
+             .rwd-table th, 
+             .rwd-table td {
+              padding: 1em !important;
+            }
+        }
+    </style>
+</head>
+<body onload="color()">
+    <div class="t">
+        商品分析比對
+    </div>
+      
+    <div class="link">
+        <a href="{:url('Index/view')}"><i class="far fa-home"></i></a><span>></span><a href="{:url('Index/compare_seller')}">商品分析比對</a>
+    </div>
+          
+    <div class="search" data-toggle="collapse" data-target="#search">
+        <span>search</span><i class="far fa-search"></i>
+    </div>
+      
+    <!-- <div class="delete option">
+        <button class="">刪除已選擇</button>
+    </div> -->
+          
+    <div class="search_all collapse" id="search">
+        <!-- <div class="type">
+            <input type="text" placeholder="代購者">
+            <i class="fas fa-sort-down"></i>
+        </div> -->
+          
+        <div class="type">
+            <input type="text" placeholder="商品名稱">
+            <i class="fas fa-sort-down"></i>
+        </div>
+          
+        <div class="type">
+            <input type="text" placeholder="比對比率">
+            <i class="fas fa-sort-down"></i>
+        </div>
+          
+        <div class="type">
+            <input type="text" placeholder="消費者">
+            <i class="fas fa-sort-down"></i>
+        </div>
+          
+        <div class="type">
+            <input type="text" placeholder="金額">
+            <i class="fas fa-sort-down"></i>
+        </div>
+          
+        <div class="type">
+            <input type="text" placeholder="狀態">
+            <i class="fas fa-sort-down"></i>
+        </div>
+    </div>
+      
+    <!-- <form action="{:url('Index/c')}">
+        <button>ratio</button>
+    </form> -->
+
+    <div class="c1">
+        <div class="content">
+            <div class="ta">
+                <table class="rwd-table">
+                    <tr>
+                        <th>商品名稱</th>
+                        <th>編號</th>
+                        <th>比對比率</th>
+                        <th>消費者</th>
+                        <th>金額</th>
+                        <th>狀態</th>
+                    </tr>
+                        
+                    <!-- <button onclick="myCom()">比對完成</button> -->
+                    <tr class="abc">
+                        <td data-th="商品名稱">Nike白色上衣</td>
+                        <td data-th="編號">1</td>
+                        <td data-th="比對比率" class="ratio">
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar"  style="width: 40%; background-color: #AACD6E; color: dimgray;">40%</div>
+                            </div>
+                        </td>
+                        <td data-th="消費者" class="pic"><img src="__PUBLIC__/image/pic.jpg">小欣</td>
+                        <td data-th="金額">1000</td>
+                        <td data-th="狀態"><button class="btn2" name="btn2">未購買</button></td>
+                        <!--<td data-th="結果"><button class="btn3">確認</button></td>-->
+                    </tr>
+
+                    <tr class="abc">
+                        <td data-th="商品名稱">GAP灰色外套</td>
+                        <td data-th="編號">1</td>
+                        <td data-th="比對比率" class="ratio">
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar"  style="width: 100%; background-color: #AACD6E; color: dimgray;">100%</div>
+                            </div>
+                        </td>
+                        <td data-th="消費者" class="pic"><img src="__PUBLIC__/image/candy.jpg">美美</td>
+                        <td data-th="金額">800</td>
+                        <td data-th="狀態"><button class="btn2" name="btn2" onclick="myCom()">未購買</button></td>
+                        <!--<td data-th="結果"><button class="btn3" onclick="myCom()">確認</button></td>-->
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+{/block}
+
+{block name="js"}
+<script>
+
+function myCom(){
+
+$.ajax({
+
+        type:"GET",//or POST
+        url:'https://cb5bf200.ap.ngrok.io/user',
+                           //  (or whatever your url is)
+       // data:{data1:var1},
+        //can send multipledata like {data1:var1,data2:var2,data3:var3
+        //can use dataType:'text/html' or 'json' if response type expected 
+        //success:
+               // process on data
+               //alert("ok ")
+
+     })
+
+}
+</script>
+{/block}

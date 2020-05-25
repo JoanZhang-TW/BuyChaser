@@ -1,0 +1,53 @@
+
+			{volist name="goods" id="pvo" empty="無資料"}
+
+
+			<div class="col-xl-3 col-lg-3 col-md-3 col-6 mb-5" data-toggle="modal" data-target="#exampleModal"data-toggle="modal" data-target="#exampleModal"  data-whatever="@mdo">
+	
+					<!--Collection card-->
+					<div class="card collection-card z-depth-1-half">
+						<!--Card image-->
+						<div class="view zoom ">
+							<img src="{$pvo.goods_img}" class="img-fluid" alt="">
+							<div class="stripe-title rgba-grey-strong d-none d-sm-block">
+									<a class="text-white">
+										{$pvo.goods_name} <br>{$pvo.goods_brand}
+									</a>
+							</div>
+							<div class="stripe-bottom p-3">
+
+									<div class="d-flex justify-content-between align-items-center text-white">
+											<!--span class="text-sm text-muted"><i class="far fa-eye pr-1"></i>59</span-->
+											<span class="text-sm text-muted"><i class="fas fa-heart pr-1"></i>{$pvo.goods_num} 人</span>
+									</div>
+	
+							</div>
+						</div>
+						<!--Card image-->
+
+						<div class="card-body p-0 ">
+								<p class="h6 p-3">{$pvo.goods_des}</p>
+						</div>
+						<div>
+
+								<div class="d-flex justify-content-between align-items-center rgba-grey-strong p-1">
+										<div class="col-xl-4 col-lg-4 col-md-4 col-10">
+												<span class=""><i class="fas fa-map-marker-alt pr-1"></i>{$pvo.goods_lo}</span>
+											</div>
+											<div class="col-8 text-right d-none d-sm-block">
+													<span class=""><i class="fas fa-heart pr-1"></i>{$pvo.goods_num} 人</span>
+										</div>
+								</div>
+						</div>
+
+
+
+
+					</div>
+					<!--Collection card-->
+
+		
+			</div>
+			{/volist}
+
+

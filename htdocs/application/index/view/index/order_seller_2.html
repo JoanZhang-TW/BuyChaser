@@ -1,0 +1,80 @@
+{extend name="Public:header" /}
+{block name="content"}
+<html>
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="__PUBLIC__/css/order_seller_2.css">
+</head>
+<body>
+<button id="back" onclick="history.back()"><i class="far fa-arrow-alt-circle-left fa-3x"></i></button>
+
+<div class="ui search">
+                <input class="prompt" type="text" placeholder="Search...">
+                <i class="fas fa-search"></i>
+                
+                <div class="results">
+            
+                </div>
+            </div>
+
+            <div class="y">
+                <div class="w">    
+                        <div class="good">
+                                <table class="g">
+                                    <tr>
+                                        <td>訂購人</td>
+                                        <td>件數</td>
+                                        <td>金額</td>
+                                    </tr>
+                        
+                                    <tr>
+                                        <td>小名</td>
+                                        <td>1</td>
+                                        <td>100元</td>
+                                    </tr>
+                                </table>
+                            </div>
+                    
+                        <div class="down">
+                            <i class="fas fa-sort-down fa-3x" id="sort"></i>
+                        </div>
+                </div>
+                
+                <div id="col">
+                <div id="info">
+                    <table class="info">
+                        <tr>
+                            <td>尺寸</td>
+                            <td>期限</td>
+                            <td>價錢</td>
+                        </tr>
+                        <tr>
+                            <td>S</td>
+                            <td>2019-9-17</td>
+                            <td>$500</td>
+                        </tr>
+                    </table>
+                </div>
+                </div>
+            </div>
+</body>
+</html>
+{/block}
+
+{block name="js"}
+<script>
+document.getElementById("sort").onclick = function(){
+                var c = document.getElementById("col")
+        
+                if(c.style.zIndex=="-99" || c.style.zIndex==''){
+                    c.style.transform="translateY(98%)";
+                    c.style.zIndex="1";
+                }
+        
+                else{
+                    c.style.transform="translateY(-10%)";
+                    c.style.zIndex="-99";
+                }
+            }
+</script>
+{/block}

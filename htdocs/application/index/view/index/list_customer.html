@@ -1,0 +1,1020 @@
+{extend name="Public:header" /}
+{block name="css"}
+<style>
+	.file {
+		visibility: hidden;
+		/*position: absolute;*/
+	}
+</style>
+{/block}
+
+{block name="content"}
+<html>
+<head>
+    <meta charset="utf-8">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+TC&display=swap" rel="stylesheet">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker3.standalone.min.css">
+    <style>
+        html{
+            height: 100%;
+            background-color: #fff;
+        }
+
+        body{
+            /* font-family: 微軟正黑體; */
+            font-family: 'Noto Sans TC', sans-serif;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            background-color: #fff;
+        }
+
+        /* .rwd-table input[type="checkbox"]{
+            opacity: 1;
+        } */
+
+        .c1{
+            height: auto;
+            background-color: #fff;
+            padding-top: 1.5%;
+            clear: both;
+        }
+
+        .bar{
+            position: absolute;
+            top: 3%;
+            right: 3%;
+        }
+
+        .t{
+            font-size: 28px;
+            padding-left: 9%;
+            background-color: #fff;
+            color:#466900;
+            padding-top: 3%;
+            float: left;
+        }
+
+        .link{
+            padding-top: 3.7%;
+            padding-left: 76%;
+        }
+
+        .link a{
+            color: black;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .link span{
+            margin-left: 2%;
+            margin-right: 2%;
+        }
+
+        .content{
+            background-color: #fff;
+            margin-left: 9%;
+            width: 75%;
+        }
+
+        .ta{
+            display: flex;
+            justify-content: center;
+            margin-top: 0%;
+        }
+
+        .ta table{
+            width: 100%;
+            text-align: center;
+            overflow: auto;
+        }
+
+        .rwd-table {
+		 	 overflow: hidden;
+			}
+
+			/* .rwd-table tr:nth-of-type(2n){
+			  background: #eee;
+            } */
+            
+			.rwd-table th, 
+			.rwd-table td {
+			  margin: 0.5em 1em;
+            }
+            
+			.rwd-table {
+			  min-width: 100%;
+			}
+
+			.rwd-table th {
+			  display: none;
+			}
+
+			.rwd-table td {
+              display: block;
+              font-size: 16px;
+              font-weight: bold;
+            }
+
+			.rwd-table td:before {
+			  content: attr(data-th) " : ";
+			  width: 6.5em;
+              display: inline-block;
+              color:#f69e53;
+			}
+
+			.rwd-table th, .rwd-table td {
+              text-align: center;
+              font-family: 'Noto Sans TC', sans-serif;
+            }
+            
+            .rwd-table th{
+                color: white;
+            }
+
+			.rwd-table th, .rwd-table td:before {
+              font-weight: bold;
+              font-size: 18px;
+              font-family: 微軟正黑體;
+            }
+
+            .rwd-table tr:first-child{
+                border-left: 0;
+                background-color: #f69e53;
+                border-bottom: none;
+            }
+
+            .rwd-table tr:first-child:hover{
+                border-left: 0;
+                background-color: #f69e53;
+            }
+
+            .rwd-table tr{
+                /* border-left: 5px solid white; */
+                border-bottom: 1.5px solid #c8c8a9;
+                color:dimgray;
+            }
+
+            /* .rwd-table tr:nth-of-type(2n){
+                color: #07889B;
+            } */
+
+            .rwd-table tr:last-child{
+                border-bottom: 0;
+            }
+
+            .rwd-table tr:hover{
+                background-color: #eaeaea;
+                /* border-left: 5px solid #c8c8a9; */
+            }
+
+            .rwd-table .btn1{
+                border:0 ;
+                border-radius: 7px;
+               padding:2%;
+              color:black;
+                
+            }
+
+             .rwd-table .btn1{
+                background-color: #2D7DBC;
+               
+            }
+
+        .rwd-table .pic{
+            width: 20%;
+            white-space: nowrap;
+        }
+
+        .rwd-table .pic img{
+            width: 80%;
+        }
+
+        .type input{
+            outline: none;
+            width: 94%;
+            border: 0;
+            font-size: 14px;
+        }
+
+        .search{
+            margin-left: -8.7%;
+            background-color: #aaaaaa;
+            color: white;
+            text-align: center;
+            margin-top: 2.3%;
+            padding: 0.3% 0 0.3% 0;
+            border-radius: 6px;
+            width: 6.8%;
+            margin-bottom: 2%;
+            cursor: pointer;
+            float: left;
+        }
+
+        .search span{
+            margin-right: 10%;
+        }
+
+        .search_all{
+            margin-top: 1%;
+            margin-left: 9%;
+            clear: both;
+            width: 75%;
+        }
+
+        .type{
+            width: 28%;
+            padding-bottom: 0.5%;
+            border-bottom: 2px solid gray;
+            float: left;
+            margin-right: 5%;
+            margin-bottom: 4%;
+        }
+
+        .sure{
+            border: 0;
+            border-radius: 7px;
+            color: black;
+            padding: 0.5%;
+            background-color: #dddddd;
+        }
+
+        .delete.option{
+            margin-left: 0%;
+            margin-top: 2.2%;
+            width: 4%;
+            float: left;
+        }
+
+        .delete.option button{
+            border: 0;
+            border-radius: 7px;
+            color: black;
+            padding: 10%;
+        }
+
+        .modify button{
+            background-color: none;
+            border: none;
+            border-radius: 25px;
+        }
+
+        .fa-pencil-alt{
+            background-color: #dddddd;
+            border-radius: 25px;
+            color:dimgray;
+        }
+
+        .fa-times{
+            background-color:#dddddd ;
+            padding: 8% 13% 8% 13%;
+            border-radius: 25px;
+            color:dimgray;
+        }
+
+        .add3{
+            background-color:  #f9802d;
+            width: 52px;
+            text-align: center;
+            height: 52px;
+            border-radius: 50%;
+            right: 15%;
+            top: 88%;
+            cursor: pointer;
+            position: fixed;
+        }
+
+        .add3 i{
+            color: white;
+            font-size: 26px;
+            margin-top: 25%;
+        }
+
+        .pagination{
+            display: flex;
+            justify-content: center;
+            padding-top: 5%;
+            background-color: white;
+        }
+
+        .pagination .page-link{
+            color: black;
+        }
+
+        .good_img{
+            margin-bottom: 5%;
+            text-align: center;
+            margin-left: 15%;
+            margin-top: 0%;
+        }
+
+        .good_img span{
+            font-size: 18px;
+            color: #f9802d;
+            float: left;
+            margin-right: 0%;
+            margin-top: 15%;
+        }
+
+        .good_img .photo{
+            margin-top: 27%;
+        }
+
+        .good_img .pic{
+            width: 50%;
+            background-color: #DDDDDD;
+            margin-left: 27%;
+            height: 180px;
+        }
+
+        .good_img .pic img{
+            width: 100%;
+            min-height: 180px;
+            max-height: 180px;
+        }
+
+        .good_img .pic .upload{
+            padding-top: 0%;
+            margin-top: -53%;
+        }
+
+        .good_img .pic .upload i{
+            color: gray;
+            margin-left: -60%;
+        }
+
+        .good_img .pic .upload span{
+            color: gray;
+            font-size: 14px;
+            margin-left: 38%;
+        }
+
+        .good_img .re_upload{
+            margin-left: 37.5%;
+            margin-top: 2%;
+        }
+
+        .good_img .re_upload button{
+            border: 0;
+            border-radius: 3px;
+            height: 30px;
+        }
+
+        .good_name{
+            margin-bottom: 5%;
+            text-align: center;
+            margin-left: 15%;
+            float: left;
+        }
+
+        .good_name span{
+            font-size: 18px;
+            color: #f9802d;
+            float: left;
+            margin-right: 8%;
+            margin-top: 1.2%;
+        }
+
+        .good_name input{
+            width: 62.5%;
+        }
+
+        .good_type{
+            margin-bottom: 5%;
+            text-align: center;
+            margin-left: 23%;
+            float: left;
+        }
+
+        .good_type span{
+            font-size: 18px;
+            color: #f9802d;
+            float: left;
+            margin-right: 8%;
+            margin-top: 1.2%;
+        }
+
+        .good_type input{
+            width: 70%;
+        }
+
+        .good_type.g{
+            margin-top: 8%;
+        }
+
+        .good_type.g span{
+            margin-top: -15%;
+        }
+
+        .good_type .dt{
+            width: 88%;
+            margin-left: 29.5%;
+            margin-top: -17%;
+        }
+
+        .good_type .input-group{
+            width: 76%;
+        }
+
+        .modal-title{
+            color: #466900;
+        }
+
+        .modal-footer button{
+            position: relative;
+            right: 2.5%;
+            border: 0;
+            color: white;
+            background-color: black;
+            border-radius: 7px;
+            width: 10%;
+            height: 30px;
+        }
+
+        @media(max-width: 480px){
+            .link{
+                padding-top: 2%;
+                padding-left: 9.5%;
+                clear: both;
+            }
+                
+            .c1{
+                padding-top: 5%;
+            }
+
+            .rwd-table td{
+                text-align: left;
+            }
+
+            .rwd-table .pic{
+                width: 50%;
+                white-space: nowrap;
+            }
+
+            .rwd-table .pic img{
+                width: 80%;
+            }
+
+            .type input{
+                width: 92%;
+            }
+
+            .search{
+                padding: 0.7% 0 0.7% 0;
+                width: 23%;
+                margin-bottom: 4%;
+                margin-left: 9%;
+                margin-top: 5%;
+            }
+
+            .search_all{
+                width: 90%;
+            }
+
+            .type{
+                width: 70%;
+                padding-bottom: 1.5%;
+                margin-bottom: 6%;
+            }
+
+            .sure{
+                clear: both;
+                margin-top: 75%;
+                margin-left: -75%;
+                padding: 1.5%;
+            }
+            
+            .delete.option{
+                margin-left: 0%;
+                margin-top: 4.5%;
+                width: 30%;
+                text-align: center;
+            }
+
+            .delete.option button{
+                border: 0;
+                border-radius: 7px;
+                padding-top: 3%;
+                padding-bottom: 3%;
+                background-color:#7BB31A;
+            }
+
+            .modify form{
+                display: inline-block;
+                white-space: nowrap;
+                margin-left: -6%;
+            }
+                    
+            .fa-pencil-alt{
+                padding: 25%;
+            }
+
+            .fa-times{
+                padding: 3% 4% 3% 4%;
+            }
+
+            .pagination{
+                padding-top: 10%;
+                padding-bottom: 10%;
+            }
+
+            .add3{
+                background-color:  #f9802d;
+                /* width: 13%; */
+                width: 48px;
+                height: 48px;
+                text-align: center;
+                /* height: 7.5%; */
+                border-radius: 50%;
+                /* position: absolute; */
+                right: 13.5%;
+                top: 90%;
+                position: fixed;
+            }
+
+            .add3 i{
+                color: white;
+                font-size: 26px;
+                margin-top: 25%;
+            }
+
+            .good_img{
+                text-align: center;
+                margin-left: 0%;
+                margin-top: 0%;
+            }
+
+            .good_img span{
+                font-size: 18px;
+                color: #f9802d;
+                float: left;
+                margin-right: 0%;
+                margin-top: 21%;
+            }
+
+            .good_img .photo{
+                margin-top: 22%;
+            }
+
+            .good_img .pic{
+                width: 62%;
+                background-color: #DDDDDD;
+                margin-left: 27.5%;
+                height: 180px;
+            }
+
+            .good_img .pic img{
+                width: 100%;
+                min-height: 180px;
+                max-height: 180px;
+            }
+
+            .good_img .pic .upload{
+                padding-top: 0%;
+                margin-top: -48%;
+            }
+
+            .good_img .pic .upload i{
+                color: gray;
+                margin-left: -60%;
+            }
+
+            .good_img .pic .upload span{
+                color: gray;
+                font-size: 14px;
+                margin-left: 40%;
+                margin-top: 14%;
+            }
+
+            .good_img .re_upload{
+                margin-left: 62.5%;
+                margin-top: 4%;
+            }
+
+            .good_name{
+                margin-bottom: 5%;
+                text-align: center;
+                margin-left: 0%;
+                float: left;
+            }
+
+            .good_name span{
+                font-size: 18px;
+                color: #f9802d;
+                float: left;
+                margin-right: 5%;
+                margin-top: 1.2%;
+            }
+
+            .good_type{
+                margin-bottom: 5%;
+                text-align: center;
+                margin-left: 11%;
+                float: left;
+            }
+
+            .good_type:first-child{
+                margin-top: 15%;
+            }
+
+            .good_type span{
+                font-size: 18px;
+                color: #f9802d;
+                float: left;
+                margin-right: 5%;
+                margin-top: 1.2%;
+            }
+
+            .good_type .dt{
+                width: 140%;
+                margin-left: 38%;
+            }
+
+            .good_type .input-group{
+                width: 74%;
+            }
+
+            .modal-footer button{
+                position: relative;
+                right: 13%;
+                border: 0;
+                color: white;
+                background-color: black;
+                border-radius: 7px;
+                width: 25%;
+                height: 32px;
+            }
+        }
+
+        @media (min-width: 480px) {
+              
+              .rwd-table td:before {
+              display: none;
+            }
+           .rwd-table th, .rwd-table td {
+              display: table-cell;
+              padding: 0.25em 0.5em;
+            }
+            .rwd-table th:first-child, 
+            .rwd-table td:first-child {
+              padding-left: 0;
+            }
+            .rwd-table th:last-child, 
+            .rwd-table td:last-child {
+              padding-right: 0;
+            }
+             .rwd-table th, 
+             .rwd-table td {
+              padding: 1em !important;
+            }
+            .add2{
+            background-color:  #f9802d;
+            width: 52px;
+            text-align: center;
+            height: 52px;
+            border-radius: 50%;
+            right: 8%;
+            top: 10%;
+            cursor: pointer;
+            position: absolute;
+        }
+          
+          }
+    </style>
+
+</head>
+<body>
+    <div class="t">
+        代購清單
+    </div>
+
+    <div class="link">
+        <a href="{:url('Index/view')}"><i class="far fa-home"></i></a><span>></span><a href="{:url('Index/list_customer')}">代購清單</a>
+    </div>
+
+    <div class="search" data-toggle="collapse" data-target="#search">
+        <span>search</span><i class="far fa-search"></i>
+    </div>
+
+    <div class="delete option">
+        <button onclick="del()">刪除</button>
+    </div>
+
+    <form class="search_all collapse" id="search" method="POST" action="{:url('Index/do_search')}">
+        <div class="type">
+            <input type="text" placeholder="商品名稱" name="good_name">
+            <i class="fas fa-sort-down"></i>
+        </div>
+            
+        <div class="type">
+            <input type="text" placeholder="尺寸" name="good_size">
+            <i class="fas fa-sort-down"></i>
+        </div>
+            
+        <div class="type">
+            <input type="text" placeholder="金額" name="good_price">
+            <i class="fas fa-sort-down"></i>
+        </div>
+            
+        <div class="type">
+            <input type="text" placeholder="數量" name="good_num">
+            <i class="fas fa-sort-down"></i>
+        </div>
+            
+        <div class="type">
+            <input type="date" name="good_date">
+            <i class="fas fa-sort-down"></i>
+        </div>
+
+        <button class="sure">確認</button>
+    </form>
+
+    <div class="c1">
+        <div class="content">
+            <div class="ta">
+                    <table class="rwd-table">
+                                <tr>
+                                    <th></th>
+                                    <!-- <th>編號</th> -->
+                                    <th>商品圖片</th>
+                                    <th>商品名稱</th>
+                                    <th>尺寸</th>
+                                    <th>金額</th>
+                                    <th>數量</th>
+                                    <th>期限</th>
+                                    <th>修改</th>
+                                    <!-- <th>修改</th> -->
+                                    <th>刪除</th>
+                                </tr>
+
+                                    {volist name="goods" id="pvo" empty=""}
+                                    <tr id="{$pvo.id}">
+                                        <td data-th="選取" scope="row">
+                                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck{$pvo.id}">
+                                            <label class="form-check-label" for="defaultCheck{$pvo.id}"></label>
+                                        </td>
+                                        <!-- <td data-th="編號">{$pvo.id}</td> -->
+                                        <td data-th="商品圖片" class="pic"><img src="{$pvo.goods_img}" alt="" class="img-fluid z-deptd-0"></td>
+                                        <td data-th="商品名稱">{$pvo.goods_name}</td>
+                                        <td data-th="尺寸">{$pvo.goods_size}</td>
+                                        <!-- <td></td> -->
+                                        <td data-th="金額">${$pvo.goods_price}</td>
+                                        <td data-th="數量">{$pvo.goods_num}</td>
+                                        <td data-th="期限">{$pvo.goods_date}</td>
+                                        <td data-th="修改" class="modify">
+                                            <form  method="POST" action="{:url('Index/list_mod')}">
+                                                <input type="text" name="mod" value="{$pvo.id}" style="display: none;">
+                                                <button type="submit"><i class="far fa-pencil-alt"></i></button>
+                                            </form>
+                                        </td>
+                                        <!-- <td data-th="修改">
+                                            <a href='{:url("","id=".$pvo.id)}' data-toggle="modal" data-target="#exampleModalCenter"><i class="far fa-pencil-alt"></i></a>
+                                        </td> -->
+                                        <td data-th="刪除">
+                                            <!--button type="button" class="btn btn-sm btn-danger waves-effect waves-light" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove item">X</button-->
+                                            <a onclick="p_delete('{$pvo.id}')" ><i class="far fa-times"></i></a>
+                                        </td>
+                                    </tr>
+                                    {/volist}
+                                    
+                                    <!-- {volist name="goods" id="pvo2" empty=""}
+                                    <tr id="{$pvo2.id}">
+                                        <td data-th="選取" scope="row">
+                                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                                            <label class="form-check-label" for="defaultCheck1"></label>
+                                        </td>
+                                        /<td data-th="編號">{$pvo.id}</td>
+                                        <td data-th="商品圖片" class="pic"><img src="{$pvo2.goods_img}" alt="" class="img-fluid z-deptd-0"></td>
+                                        <td data-th="商品名稱">{$pvo2.goods_name}</td>
+                                        <td data-th="尺寸">{$pvo2.goods_size}</td>
+                                        /<td></td>
+                                        <td data-th="金額">${$pvo2.goods_price}</td>
+                                        <td data-th="數量">{$pvo2.goods_num}</td>
+                                        <td data-th="期限">{$pvo2.goods_date}</td>
+                                        <td data-th="修改">
+                                            <a href='{:url("Index/management_modify","id=".$pvo2.id)}'><i class="far fa-pencil-alt"></i></a>
+                                        </td>
+                                        <td data-th="刪除">
+                                            /button type="button" class="btn btn-sm btn-danger waves-effect waves-light" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove item">X</button>
+                                            <a onclick="p_delete('{$pvo.id}')" ><i class="far fa-times"></i></a>
+                                        </td>
+                                    </tr>
+                                    {/volist} -->
+                                    
+                                    
+                          </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- <div class="add">
+        <i class="far fa-plus-circle fa-3x" data-toggle="modal" data-target="#exampleModalCenter2"></i>
+    </div> -->
+
+    <!-- <div class="add2">
+        <span data-toggle="modal" data-target="#exampleModalCenter2"><i class="fas fa-plus"></i></span>
+    </div> -->
+
+    <div class="add3">
+        <span data-toggle="modal" data-target="#exampleModalCenter2"><i class="fas fa-plus"></i></span>
+    </div>
+
+     <!-- Modal 新增--> 
+     <form action="{:url('Index/list_customer')}" enctype="multipart/form-data" method="post">   
+        <div class="modal fade" id="exampleModalCenter2" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle2" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalCenterTitle">新增</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                             <!--<div class="goods_img">
+                                    <span>商品圖片 :</span>
+                
+                                   <div class="upload">
+                        <input type="file" name="image" class="file" accept="image/*">          
+                            <img src="https://placehold.it/225x150" id="preview" class="img-thumbnail">
+    
+                        <div class="input-group my-5">
+                            <div class="input-group-append">
+                                    <button type="button" class="browse btn" style="background-color: #8EC0E4;">Browse...</button>
+                                                                    </div>                                
+                                                        </div>
+                                    
+                                    </div>
+                                </div>-->
+    
+                        <div class="good_img">
+                            <input type="file" name="image" class="file" accept="image/*">      
+                            <span class="photo">商品圖片 :</span>
+                            <div class="pic">
+                                <img id="preview">
+                                <div class="upload" id="upload">
+                                    <i class="fal fa-images fa-2x browse" id="preview"></i>          
+                                    <span>Upload</span> 
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="good_name">
+                            <span>商品名稱 :</span>
+                            <input type="text" class="form-control" name="goods_name">
+                        </div>
+        
+                        <div class="good_type">
+                            <span>尺寸 :</span>
+                            <input type="text" class="form-control" name="goods_size">
+                        </div>
+            
+                        <div class="good_type">
+                            <span>金額 :</span>
+                            <input type="text" class="form-control" name="goods_price">
+                        </div>
+            
+                        <div class="good_type">
+                            <span>數量 :</span>
+                            <input type="text" class="form-control" name="goods_num">
+                        </div>
+        
+                        <div class="good_type g">
+                            <span>期限 :</span>
+                            <input type="date" class="form-control dt" value="2019-12-19" name="goods_date">
+                            <!-- <div class='input-group date' id='datetimepicker1' name="goods_date" >
+                                <input type='text' class="form-control"/>
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </span>
+                            </div> 
+        
+                            <script type="text/javascript">
+                                $(function () {
+                                    $('#datetimepicker1').datepicker({
+                                        orientation: "bottom",
+                                        format: 'yyyy/mm/dd'
+                                    });
+                                });
+                            </script>-->
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit">確認</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>     
+
+      <!-- Modal 修改-->
+      <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalCenterTitle">修改</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                <div class="good_img">
+                    <span>商品圖片 :</span>
+                    <div class="pic">
+                        <img src="">
+                    </div>
+
+                    <div class="re_upload">
+                        <button>上傳圖片</button>
+                    </div>
+                </div>
+
+                <div class="good_name">
+                    <span>商品名稱 :</span>
+                    <input type="text" class="form-control">
+                </div>
+
+                <div class="good_type">
+                    <span>尺寸 :</span>
+                    <input type="text" class="form-control">
+                </div>
+
+                <div class="good_type">
+                    <span>金額 :</span>
+                    <input type="text" class="form-control">
+                </div>
+
+                <div class="good_type">
+                    <span>數量 :</span>
+                    <input type="text" class="form-control">
+                </div>
+
+                <div class="good_type">
+                    <span>期限 :</span>
+                    <input type="text" class="form-control">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button>確認</button>
+            </div>
+          </div>
+        </div>
+    </div>
+</body>
+</html>
+{/block}
+
+{block name="js"}
+
+<script>
+	$(document).on("click", ".browse", function() {
+	var file = $(this).parents().find(".file");
+	file.trigger("click");
+	});
+	$('input[type="file"]').change(function(e) {
+	var fileName = e.target.files[0].name;
+	$("#file").val(fileName);
+
+	var reader = new FileReader();
+	reader.onload = function(e) {
+		// get loaded data and render thumbnail.
+        document.getElementById("preview").src = e.target.result;
+        document.getElementById("upload").style.display = "none";
+	};
+	// read the image file as a data URL.
+	reader.readAsDataURL(this.files[0]);
+    });
+    
+    function p_delete(x){
+		$.ajax({
+
+			method:'post',
+
+			data:{
+
+				id:x,
+
+			},
+
+			url:"{:url('Index/p_delete')}",
+
+			success:function(res){
+				if(res == 200){
+					toast("刪除成功","成功訊息：","success","fade","1000","mid-center","#3c763d");
+
+					$('#'+x).remove();
+				}else{
+					toast("刪除錯誤","錯誤訊息：","error","fade","1000","mid-center","#9EC600");
+				}
+			},
+			error:function(request, error){
+				toast("伺服器錯誤","錯誤訊息：","error","fade","1000","mid-center","#9EC600");
+			}
+
+		});
+	}
+</script>
+{/block}

@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Buychaser</title>
+  <meta charset="utf-8">
+  <link href="https://fonts.googleapis.com/css?family=Noto+Sans+TC&display=swap" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+  <link href="__PUBLIC__/css/mdb.min.css" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="__PUBLIC__/css/bootstrap.min.css">
+  <link rel="stylesheet" href="__PUBLIC__/css/FormSignin.css">
+  <link rel="stylesheet" href="__PUBLIC__/css/jquery.toast.css">
+  <link rel="stylesheet" href="__PUBLIC__/css/compiled-4.8.9.min.css">  
+  <!-- Font Awesome -->
+  <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"> -->
+  <link rel="stylesheet" href="__PUBLIC__/css/all.css">
+  <link rel="stylesheet" href="__PUBLIC__/css/style.css">
+  <!-- <script type="text/javascript" src="http://www.webdesignerwall.com/demo/jquery/jquery.js"></script> -->
+  <style>
+	html{
+            height: 100%;
+        }
+
+        body{
+            font-family: 'Noto Sans TC', sans-serif;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        .logo .img1{
+          position: absolute;
+          top: 1.3%;
+          left: 1%;
+          width: 2.6%;
+        }
+
+        .logo .img2{
+          position: absolute;
+          top: 3.5%;
+          left: 4%;
+          width: 11%;
+        }
+
+        .main{
+            background-color: #fcf7eb;
+            height: 10%;
+            padding-bottom: 0;
+        }
+
+        .m1{
+            /* border-right: 3px solid #d4c1a9;
+            border-bottom: 3px solid #d4c1a9; */
+            padding-bottom: 3%;
+            text-align: right;
+            width: 85%;
+            height: 65%;
+            border-bottom-right-radius: 30px;
+        }
+	
+	.ic a{
+		padding-right: 0%;
+	}
+	
+	.ic{
+		width: 15%;
+		position: absolute;
+		right: 15.5%;
+		top: 3.5%;
+  }
+
+  .ic .ic_pic{
+    float: left;
+    width: 20.5%;
+    margin-right: 7%;
+    margin-top: 0.5%;
+  }
+
+  .ic .ic_pic img{
+    width: 100%;
+    border-radius: 50%;
+  }
+
+  .ic .ic_1{
+    float: left;
+    margin-top: 2%;
+  }
+
+  .ic .ic_1 a{
+    background-color: inherit;
+    padding: 85% 115% 55% 115%;
+    border-radius: 50%;
+  }
+
+  .ic .ic_1 i{
+    font-size: 24px;
+  }
+
+  .ic .ic_1 a:hover{
+    background-color: #dddddd;
+    /* padding: 55% 105% 55% 105%;
+    border-radius: 50%; */
+  }
+
+  .ic .ic_2 i{
+    font-size: 24px;
+  }
+
+  .ic .ic_3 i{
+    font-size: 24px;
+    float: left;
+    margin-left: 23%;
+    margin-top: 2.5%;
+  }
+
+  .ic .ic_2 .p1[data-count]:after{
+            position:absolute;
+            right:-10%;
+            top:-15%;
+            content: attr(data-count);
+            font-size:40%;
+            padding:13% 18% 13% 18%;
+            border-radius:50%;
+            line-height:1em;
+            color: white;
+            background:#f69e53;
+            text-align:center;
+            min-width: 1em;
+  }
+
+  .ic .ic_2 .p1 .show{
+      display: none;
+      z-index: 99;
+      margin-top: 100%;
+      text-align: left;
+      margin-left: -350%;
+      width: 750%;
+      background-color: #f4f4f4;
+      padding-bottom: 60%;
+  }
+
+  .show .s{
+    background-color: #ecf0f5;
+    height: 11px;
+    margin-bottom: 5%;
+  }
+
+  .show .cart_show{
+    width: 100%;
+    margin-left: 18%;
+    margin-bottom: 8%;
+  }
+
+  .show .cart_show a{
+    color: black;
+  }
+
+  .show .cart_show img{
+    width: 23%;
+    height: 55px;
+    float: left;
+    margin-top: 3%;
+    margin-right: 8%;
+  }
+
+  .show .cart_show .cart_info{
+    font-size: 13px;
+    line-height: 170%;
+  }
+
+  .show .check{
+    text-align: center;
+  }
+
+  .show .check a{
+    letter-spacing: 5px;
+    color: black;
+  }
+
+  .bar{
+    position: absolute;
+    right: 0;
+  }
+  
+
+  /** sidenav start **/
+  .sidenav {
+  height: 100%;
+  width: 12.5%;
+  position: fixed;
+  z-index: 99;
+  top: 0;
+  right: 0;
+  background-color:#e37b5a;
+  overflow-x: hidden;
+  transition: 0.5s;
+  border-top-left-radius: 30px;
+  font-family: 'Noto Sans TC', sans-serif;
+}
+
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 18px;
+  color: white;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0%;
+  left: -10.5%;
+  font-size: 36px;
+}
+
+.sidenav span{
+  padding-left: 10%;
+  cursor: pointer;
+}
+
+#main {
+  transition: margin-right .5s;
+  padding: 16px;
+}
+
+/* #title{
+  display: none;
+}
+
+#title2{
+  display: none;
+}
+
+#title3{
+  display: none;
+} */
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+/** sidenav end **/
+
+dl{
+  position: relative;
+  top: 10%;
+}
+
+dt{
+  font-size: 22px;
+  color: white;
+}
+
+#d{
+  padding-left: 13%;
+  padding-top: 3%;
+}
+
+#d2{
+  padding-left: 13%;
+  padding-top: 10%;
+}
+
+#d3{
+  padding-left: 14%;
+  padding-top: 1%;
+}
+
+#title3{
+  font-size: 22px;
+}
+
+@media (max-width: 480px){
+  .main{
+    background-color: #fef7ec;
+  }
+
+  .sidenav{
+    width: 10%;
+    background-color:#e37b58;
+  }
+
+  .sidenav .closebtn {
+  position: absolute;
+  top: 0%;
+  left: -65%;
+  font-size: 36px;
+}
+
+.ic .ic_2 .p1[data-count]:after{
+            position:absolute;
+            right:-15%;
+            top:-17%;
+            font-size:60%;
+            padding:13% 18% 13% 18%;
+  }
+
+#title{
+  display: none;
+}
+
+#title2{
+  display: none;
+}
+
+#title3{
+  display: none;
+}
+
+#d{
+  padding-left: 30%;
+}
+
+#d2{
+  padding-left: 30%;
+  padding-top: 8%;
+}
+
+/* #d3{
+  padding-left: 23%;
+  padding-top: 8%;
+} */
+
+  .logo .img1{
+      position: absolute;
+      top: 1%;
+      left: 2%;
+      width: 8%;
+  }
+
+  .logo .img2{
+          position: absolute;
+          top: 3.5%;
+          left: 11.5%;
+          width: 30%;
+        }
+
+        .ic{
+		width: 40%;
+    position: absolute;
+    top: 3.5%;
+    right: 15%;
+  }
+
+  .ic .ic_pic{
+    float: left;
+    width: 25%;
+    margin-right: 0%;
+    margin-top: -2%;
+  }
+
+  .ic .ic_pic img{
+    width: 100%;
+    border-radius: 50%;
+  }
+
+  .ic .ic_1{
+    float: left;
+    margin-top: 0%;
+  }
+
+  .ic .ic_1 a{
+    background-color: inherit;
+    padding: 13px 17px 10px 17px;
+  }
+
+  .ic .ic_1 a:hover{
+    background-color: #dddddd;
+    padding: 13px 17px 10px 17px;
+  }
+
+  .ic .ic_3 i{
+    margin-left: 0%;
+    margin-top: 0%;
+  }
+
+  .ic .ic_2{
+    margin-top: -2.5%;
+  }
+
+  .ic .ic_2 .p1 .show{
+      display: none;
+      z-index: 99;
+      margin-top: 100%;
+      text-align: left;
+      margin-left: -585%;
+      width: 750%;
+      background-color: #f4f4f4;
+      padding-bottom: 60%;
+  }
+}
+  </style>
+
+
+  <script src="__PUBLIC__/js/jquery.min.js"></script>
+  <script src="__PUBLIC__/js/popper.min.js"></script>
+  <script src="__PUBLIC__/js/bootstrap.min.js"></script>
+  <script src="__PUBLIC__/js/jquery.toast.js"></script>
+  <script type="text/javascript" src="__PUBLIC__/js/mdb.min.js"></script><!-- MDB core JavaScript -->
+  
+  {block name="css"}{/block}
+</head>
+<body>
+
+<!--<nav class="navbar">
+   <a class="navbar-brand" href="{:url('Index/view')}">BuyChaser</a>
+  <div class="ic">
+	  <a href="https://www.facebook.com/BuyChaser-849443458751199/?epa=SEARCH_BOX" target="_blank"><i class="fab fa-facebook fa-2x"></i></a>
+	  <a><i class="fas fa-shopping-bag fa-2x"></i></a>
+	  <a><i class="far fa-credit-card fa-2x"></i></a>
+	  <a><i class="fas fa-shopping-cart fa-2x"></i></a>
+  </div> -->
+  
+  <!-- <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarsExample01" aria-controls="navbarsExample01" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button> -->
+
+  <div class="main">
+      <div class="m1">
+          <div class="ic">
+            <div class="ic_pic">
+              <!-- <img src="__PUBLIC__/image/pic.jpg"> -->
+              <i class="fal fa-user-circle fa-2x"></i>
+            </div>
+
+            <div class="ic_1">
+              <a href="https://www.facebook.com/BuyChaser-849443458751199/?epa=SEARCH_BOX" target="_blank"><i class="fab fa-facebook-f fa-1x "style="color:black;"></i></a>
+            </div>
+
+            <div class="ic_3">
+              <a href="{:url('Index/fb')}" target="_blank"><i class="far fa-video fa-1x" style="color:black;"></i></a>
+            </div>
+            <!-- https://pic.sopili.net/l/facebook/page/112871213449585/ -->
+            <!-- https://www.facebook.com/%E7%BE%8E%E5%9C%8B%E4%BB%A3%E8%B3%BC-112871213449585/ -->
+            <!-- data-count="2" -->
+        
+            <div class="ic_2">
+                <span class="p1 fa-stack fa-1x has-badge" id="p1">
+                    <a href="{:url('Index/cart')}"><i class="p3 fal fa-shopping-cart fa-stack-1x xfa-inverse" data-count="2" data-count="4b" style="color:black;"></i></a>
+                    <!-- <div class="show">
+                      <div class="s"></div>
+
+                      <div class="cart_show">
+                        <a href="">
+                          <img src="__PUBLIC__/image/nike2.jpg">
+                          <div class="cart_info">
+                            <span>NIKE白色上衣</span><br>
+                            <span>尺寸 : M</span><br>
+                            <span>數量 : 3</span>
+                          </div>
+                        </a>
+                      </div>
+
+                      <div class="cart_show">
+                        <a href="">
+                          <img src="__PUBLIC__/image/adidas.jpg">
+                          <div class="cart_info">
+                            <span>Adidas白鞋</span><br>
+                            <span>尺寸 : 24</span><br>
+                            <span>數量 : 1</span>
+                          </div>
+                        </a>
+                      </div>
+
+                      <div class="check">
+                        <a href="{:url('Index/cart')}">CHECK OUT</a>
+                      </div>
+                    </div> -->
+                </span>
+            </div>
+          </div>
+
+          <div class="logo">
+            <a href="{:url('Index/view')}"><img src="__PUBLIC__/image/logo_change.png" class="img1"></a>
+            <a href="{:url('Index/view')}"><img src="__PUBLIC__/image/logo3.png" class="img2"></a>
+          </div>
+      </div>
+  </div>
+
+ <!-- sidenav start  -->
+<!-- <span class="bar" style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span> -->
+ <div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" id="closebtn" onclick="openNav()">&#9776;</a>
+  <dl>
+    <dt id="d"><i class="fal fa-shopping-bag fa-1x"></i><span data-toggle="collapse" data-target="#down" id="title">代購者</span></dt>
+    <div id="down" class="collapse">
+      <!-- <dd><a class="nav-link" href="{:url('Index/management_buy')}">代購商品管理</a></dd>
+      <dd><a class="nav-link" href="{:url('Index/management_insert')}">新增代購商品</a></dd>
+      <dd><a class="nav-link" href="{:url('Index/management_list')}">代購商品列表</a></dd> -->
+      <dd><a class="nav-link" href="{:url('Index/list_customer')}">代購清單</a></dd>
+      <dd><a class="nav-link" href="{:url('Index/good_seller')}">商品管理</a></dd>
+      <dd><a class="nav-link" href="{:url('Index/compare_seller')}">商品分析比對</a></dd>
+      
+    </div>
+    
+    <dt id="d2"><i class="far fa-user fa-1x"></i><span data-toggle="collapse" data-target="#down2" id="title2">消費者</span></dt>
+    <div id="down2" class="collapse">
+     
+      <dd><a class="nav-link" href="{:url('Index/good_customer')}">商品管理</a></dd>
+      <dd><a class="nav-link" href="{:url('Index/item_customer')}">必買清單管理</a></dd>
+      <dd><a class="nav-link" href="{:url('Index/order_customer')}">訂單管理</a></dd>
+      <dd><a class="nav-link" href="{:url('Index/compare_customer_2')}">代看直播比對</a></dd>
+     
+    </div>
+    
+    <dt id="d3">
+      <?php if($member){ ?>
+			  <a class="nav-link" id="title3" href="{:url('Index/Logout')}">登出</a>	
+			<?php }else{ ?>
+			  <a class="nav-link" id="title3" href="{:url('Index/index')}">登入</a>
+			<?php } ?>
+    </dt>
+  </dl>
+  
+</div>
+<!-- sidenav end --> 
+  
+  <!-- <div class="navbar-collapse collapse" id="navbarsExample01">
+	<ul class="navbar-nav mr-auto">
+			<li class="nav-item active">
+			  <a class="nav-link" href="{:url('Index/view')}">主頁</a>
+			</li>
+			<li class="nav-item">
+			  <a class="nav-link" href="{:url('Index/management_buy')}">代購商品管理</a>
+			</li>
+			<li class="nav-item">
+					<a class="nav-link" href="{:url('Index/management_insert')}">新增代購商品</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="{:url('Index/management_list')}">代購商品列表</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="{:url('Index/order_seller')}">代購者訂單管理</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="{:url('Index/compare_seller')}">代購者商品分析比對</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="{:url('Index/good_customer')}">消費者商品管理</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="{:url('Index/item_customer')}">消費者必買清單管理</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="{:url('Index/order_customer')}">消費者訂單管理</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="{:url('Index/compare_customer')}">消費者代看直播比對</a>
+			</li>
+			<li class="nav-item ">
+			<?php if($member){ ?>
+			  <a class="nav-link" href="{:url('Index/Logout')}">登出</a>	
+			<?php }else{ ?>
+			  <a class="nav-link" href="{:url('Index/index')}">登入</a>
+			<?php } ?>
+			</li>
+	</ul>
+  </div>-->
+ <!-- </nav>  -->
+{block name="content"}{/block}
+
+
+
+
+
+
+
+
+
+
+
+<!-- <footer   style="width:100%;height:500px">
+
+
+
+
+</footer> -->
+
+
+<!-- <div class="" style="width:100%;height:10rem;background-color: #fdc23e">
+
+</div> -->
+
+
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      </div>
+      <div class="modal-body">
+      <form>
+        <input type="hidden" class="form-control" id="recipient-id">
+        <input type="hidden" class="form-control" id="pvo-id">
+        
+        <div class="form-group">
+        <label for="recipient-name" class="col-form-label">商品名稱:</label>
+        <input type="text" class="form-control" id="recipient-name"  readonly="readonly">
+        </div>
+        <div class="form-group">
+        <label for="recipient-user" class="col-form-label">購買人:</label>
+        <input type="text" class="form-control" id="recipient-user">
+        </div>
+        <div class="form-group">
+        <label for="recipient-number" class="col-form-label">數量:</label>
+        <input type="number" class="form-control" id="recipient-number">
+        </div>
+      </form>
+      </div>
+      <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      <button type="button" class="btn btn-primary" id="send">Send message</button>
+      </div>
+    </div>
+    </div>
+  </div>
+ 
+</body>
+{block name="js"}{/block}
+<script>
+$(document).ready(function(){
+	$(".p1").hover(function() {
+		$(this).find(".show").animate({opacity: "show", top: "-75"}, "slow");
+	}, function() {
+		$(this).find(".show").animate({opacity: "hide", top: "-85"}, "fast");
+	});
+});
+
+/** sidenav start **/
+function openNav() {
+  var m = document.getElementById("mySidenav");
+  var t = document.getElementById("title");
+  var t2 = document.getElementById("title2");
+  var t3 = document.getElementById("title3");
+  var c = document.getElementById("closebtn");
+  var d = document.getElementById("d");
+  var d2 = document.getElementById("d2");
+  var d3 = document.getElementById("d3");
+  var down = document.getElementById("down");
+
+  if($(window).width() > 480){
+    if(m.style.width=="12.5%" || m.style.width==''){
+      m.style.width="5%";
+      t.style.display="none";
+      t2.style.display="none";
+      t3.style.display="none";
+      c.style.left="-25%";
+      d.style.paddingLeft="36%";
+      d2.style.paddingLeft="36%";
+    }
+
+    else{
+      m.style.width="12.5%";
+      t.style.display="inline";
+      t2.style.display="inline";
+      t3.style.display="inline";
+      c.style.left="-10.5%";
+      d.style.paddingLeft="13%";
+      d2.style.paddingLeft="13%";
+      d3.style.paddingTop="6%";
+    }
+  }
+  
+
+  if($(window).width() < 480){
+    if(m.style.width=="10%" || m.style.width==''){
+      m.style.width="37%";
+      t.style.display="inline";
+      t2.style.display="inline";
+      t3.style.display="inline";
+      c.style.left="-15%";
+      d.style.paddingLeft="10%";
+      d2.style.paddingLeft="10%";
+      d3.style.paddingLeft="11.5%";
+      d3.style.paddingTop="8%";
+    }
+
+    else{
+      m.style.width="10%";
+      t.style.display="none";
+      t2.style.display="none";
+      t3.style.display="none";
+      c.style.left="-65%";
+      d.style.paddingLeft="30%";
+      d2.style.paddingLeft="30%";
+    }
+  }
+
+  
+
+  // document.getElementById("mySidenav").style.width = "18%";
+  // document.getElementById("title").style.display = "inline";
+  // // document.getElementById("main").style.marginRight = "250px";
+}
+// function closeNav() {
+//   document.getElementById("mySidenav").style.width = "5%";
+//   document.getElementById("title").style.display = "none";
+//   // document.getElementById("main").style.marginRight= "0";
+// }
+/** sidenav end **/
+
+
+      function toast(text,heading,icon,showHideTransition,hideAfter,position,loaderBg){
+        $.toast({
+          text: text, 
+          heading: 'Note',
+          icon: icon, // Type of toast icon
+          showHideTransition: 'fade', // fade, slide or plain
+          allowToastClose: true, // Boolean value true or false
+          hideAfter: hideAfter, // false to make it sticky or number representing the miliseconds as time after which toast needs to be hidden
+          stack: 5, // false if there should be only one toast at a time or a number representing the maximum number of toasts to be shown at a time
+          position: position, // bottom-left or bottom-right or bottom-center or top-left or top-right or top-center or mid-center or an object representing the left, right, top, bottom values
+          
+          
+          
+          textAlign: 'left',  // Text alignment i.e. left, right or center
+          loader: true,  // Whether to show loader or not. True by default
+          loaderBg: loaderBg,  // Background color of the toast loader
+          beforeShow: function () {}, // will be triggered before the toast is shown
+          afterShown: function () {}, // will be triggered after the toat has been shown
+          beforeHide: function () {}, // will be triggered before the toast gets hidden
+          afterHidden: function () {}  // will be triggered after the toast has been hidden
+        });
+      
+      }
+
+
+      
+      $('#exampleModal').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget) // Button that triggered the modal
+        var recipient = button.data('whatever') // Extract info from data-* attributes
+        var member_id = button.data('member_id') // Extract info from data-* attributes
+        var pvo_id = button.data('pvo_id') // Extract info from data-* attributes
+        
+        // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+        // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+        var modal = $(this)
+        console.log(pvo_id);
+        modal.find('.modal-title').text('New message to ' + recipient)
+        modal.find('#recipient-name').val(recipient)
+        modal.find('#recipient-id').val(member_id)
+        modal.find('#pvo-id').val(pvo_id)
+      })
+
+
+			$('#send').on('click', function () {
+
+        <?php if(!$member){ ?>
+
+          toast("購買失敗請先登入","錯誤訊息：","error","fade","2000","mid-center","#9EC600");
+
+        <?php } ?>
+
+          var url = "{:url('Index/order')}";
+          var data = {
+            'm_id':$('#recipient-id').val(),
+            'g_name':$('#recipient-name').val(),
+            'o_user':$('#recipient-user').val(),
+            'o_number':$('#recipient-number').val(),
+            'g_id':$('#pvo-id').val(),
+          };
+
+          $.post(url,data,function(result,statue){
+
+            if(result == 'ok'){
+              toast("購買成功","成功訊息：","success","fade","1000","mid-center","#3c763d");
+              window.location.href="{:url('Index/management_list')}"
+            }else{
+              //lert("購買失敗");
+              toast("購買失敗","錯誤訊息：","error","fade","1000","mid-center","#9EC600");
+            }
+
+          },"json");
+
+
+      })
+    </script>
+</html>

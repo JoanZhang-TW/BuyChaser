@@ -1,0 +1,536 @@
+{extend name="Public:header" /}
+{block name="content"}
+<html>
+<head>
+    <meta charset="utf-8">
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker3.standalone.min.css"> -->
+    
+    <!-- 使用 jQuery Datepicker的中文化-->
+    <!-- <script type="text/javascript" src="../jquery/jquery.ui.datepicker-zh-TW.js"></script><a name="more"></a>
+    <span style="font-family: Times New Roman;"><span style="white-space: normal;">
+    </span></span> -->
+    <link rel="stylesheet" href="__PUBLIC__/css/header_rwd.css">
+    
+    <style>
+        html{
+            height: 100%;
+        }
+
+        body{
+            font-family: 微軟正黑體;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .c1{
+            height: auto;
+            background-color: #fff;
+            padding-top: 1.5%;
+        }
+
+        .bar{
+            position: absolute;
+            top: 3%;
+            right: 3%;
+        }
+
+        .t{
+            font-size: 30px;
+            padding-left: 9%;
+            background-color: #fff;
+            font-weight: bold;
+            color:#466900;
+            padding-top: 3%;
+            float: left;
+        }
+
+        .link{
+            padding-top: 3.7%;
+            padding-left: 77%;
+        }
+
+        .link a{
+            color: #888888;
+            text-decoration: none;
+        }
+
+        .content{
+            background-color: #fff;
+            margin-left: 5%;
+            width: 86%;
+            padding-bottom: 1%;
+        }
+        
+        .good_name{
+            float: left;
+            font-size: 24px;
+            font-weight: bold;
+            color:#466900;
+            margin-right: 3%;
+            margin-left: 5%;
+            margin-top: 2%;
+            clear: both;
+        }
+
+        .click{
+            padding-top: 2.5%;
+        }
+
+        .click button{
+            border: none;
+            margin-bottom: 3%;
+            color: gray;
+            font-weight: bold;
+            height: 30px;
+            background-color: inherit;
+            border-bottom: 2px solid white;
+        }
+
+        .click button:hover{
+            border-bottom: 2px solid orange;
+        }
+
+        .ui.search{
+            margin-left: 75%;
+        }
+        
+        .prompt{
+            border:2px solid gray;
+            border-radius: 25px;
+            padding: 2%;
+            margin-top: 9%;
+            background-color: inherit;
+        }
+
+        .ta{
+            display: flex;
+            justify-content: center;
+            margin-top: 0%;
+        }
+
+        .ta table{
+            width: 100%;
+            text-align: center;
+            overflow: auto;
+            border: 1px solid #ebedec;
+        }
+
+        .rwd-table {
+		 	 overflow: hidden;
+			}
+
+			/* .rwd-table tr:nth-of-type(2n){
+			  background: #eee;
+            } */
+            
+			.rwd-table th, 
+			.rwd-table td {
+			  margin: 0.5em 1em;
+            }
+            
+			.rwd-table {
+			  min-width: 100%;
+			}
+
+			.rwd-table th {
+			  display: none;
+			}
+
+			.rwd-table td {
+              display: block;
+              font-size: 16px;
+			}
+
+			.rwd-table td:before {
+			  content: attr(data-th) " : ";
+			  width: 6.5em;
+              display: inline-block;
+              color: blue;
+              /* background-color: #44633F; */
+			}
+
+			.rwd-table th, .rwd-table td {
+              text-align: center;
+              font-family: 微軟正黑體;
+            }
+            
+            .rwd-table th{
+                background-color: #44633F;
+                color: white;
+            }
+
+			.rwd-table th, .rwd-table td:before {
+              font-weight: bold;
+              font-size: 18px;
+              font-family: 微軟正黑體;
+            }
+
+            .rwd-table tr:first-child{
+                border-left: 0;
+            }
+
+            .rwd-table tr:first-child:hover{
+                border-left: 0;
+            }
+
+            .rwd-table tr{
+                border-left: 5px solid white;
+                border-bottom: 1.5px solid #c8c8a9;
+            }
+
+            .rwd-table tr:last-child{
+                border-bottom: 0;
+            }
+
+            .rwd-table tr:hover{
+                background-color: #eaeaea;
+                border-left: 5px solid #c8c8a9;
+            }
+
+        .ta .date{
+            width: 15%;
+        }
+
+        .ta .address{
+            width: 25%;
+        }
+
+        .menu{
+            position: absolute;
+            top: 0;
+            right: 0;
+            background-color: orange;
+            height: 100%;
+            width: 5%;
+        }
+
+        .search.all{
+            clear: both;
+            margin-top: 3%;
+            margin-bottom: 1%;
+            margin-left: 9%;
+        }
+
+        .search.all select{
+            float: left;
+            height: 30px;
+            font-family: 微軟正黑體;
+            margin-right: 2%;
+        }
+
+        .search.all option{
+            font-family: 微軟正黑體;
+        }
+
+        .search.all input{
+            width: 50%;
+            float: left;
+        }
+
+        .search.date i{
+            background-color: lightblue;
+            width: 3%;
+            text-align: center;
+            height: 30px;
+            padding-top: 0.6%;
+        }
+
+        .search.date{
+            margin-left: 9%;
+            margin-top: 2%;
+        }
+
+        .search.date input{
+            float: left;
+        }
+
+        /* .search.person input{
+            margin-top: 4%;
+        }
+
+        .search.date input{
+            margin-top: 0.5%;
+        }
+
+        .search.date button{
+            margin-left: 2%;
+            color: white;
+            background-color: #d9534f;
+            border: none;
+            font-weight: bold;
+            border-radius: 6px;
+            width: 4%;
+            height: 30px;
+        } */
+
+        .fa-pencil-alt{
+            background-color: #dddddd;
+            padding: 8%;
+            border-radius: 25px;
+        }
+
+        .fa-times{
+            background-color: #c8c8a9;
+            padding: 8% 14% 8% 14%;
+            border-radius: 25px;
+        }
+
+        .page-normal a{
+    color: grey;
+    margin: -0.3%;
+    text-decoration: none;
+}
+
+.page-normal a:hover{
+    background-color: #f5f5f5;
+}
+
+
+
+.page-normal{
+    color: grey;
+    text-align: center;
+    margin-top:5%;
+    padding-bottom: 5%;
+}
+
+
+.page-normal .page-prev{
+    color:grey;
+}
+
+
+.page-normal a, .page-normal a:hover, .page-normal .page-prev, .page-normal .page-current{
+    border: 1px solid #c8c8a9;
+    padding: 5px 11px 5px 11px;
+}
+
+        @media(max-width: 480px){
+            .c1{
+                padding-bottom: 45%;
+                padding-top: 8%;
+            }
+
+            .ui.search{
+                margin-left: 25%;
+            }
+
+            .rwd-table td{
+                    text-align: left;
+                }
+
+                .fa-pencil-alt{
+            padding: 3%;
+        }
+
+        .fa-times{
+            padding: 3% 4% 3% 4%;
+        }
+        }
+
+        @media (min-width: 480px) {
+              
+              .rwd-table td:before {
+              display: none;
+            }
+           .rwd-table th, .rwd-table td {
+              display: table-cell;
+              padding: 0.25em 0.5em;
+            }
+            .rwd-table th:first-child, 
+            .rwd-table td:first-child {
+              padding-left: 0;
+            }
+            .rwd-table th:last-child, 
+            .rwd-table td:last-child {
+              padding-right: 0;
+            }
+             .rwd-table th, 
+             .rwd-table td {
+              padding: 1em !important;
+            }
+          }
+    </style>
+</head>
+<body>
+    <!-- <div class="bar">
+        <i class="fa fa-bars fa-2x"></i>
+    </div>
+        
+    <div class="menu">
+        <i class="fas fa-shopping-cart fa-2x"></i>
+    </div>
+
+    <div class="main">
+        <div class="m1">
+            <div class="ic">
+                <a href="https://www.facebook.com/BuyChaser-849443458751199/?epa=SEARCH_BOX" target="_blank"><i class="fab fa-facebook fa-2x"></i></a>
+                <a><i class="fas fa-shopping-bag fa-2x"></i></a>
+                <a><i class="far fa-credit-card fa-2x"></i></a>
+                <a><i class="fas fa-shopping-cart fa-2x"></i></a>
+            </div>
+
+             <div> 
+                <i class="fas fa-search"></i>
+            </div>
+        </div>
+        
+        <div class="t">
+            訂單管理
+        </div>
+    </div> -->
+
+    <div class="t">
+        訂單管理
+    </div>
+
+    <div class="link">
+        <a href="{:url('Index/view')}"><i class="far fa-home"></i></a>><a href="{:url('Index/order_seller')}">訂單管理</a>
+    </div>
+
+    <div class="search all">
+        <select class="browser-default">
+            <option value="" selected="">搜尋關鍵字</option>
+        </select>
+        <input type="text" placeholder="搜尋編號/訂購人/狀態">
+        <!-- <i class="far fa-search"></i> -->
+    </div>
+
+    <div class="search date">
+        <!-- <input type="button" id="datepicker"> -->
+        <i class="far fa-search"></i>
+    </div>
+
+    <div class="c1">
+        <div class="content">
+            <!-- <div class="ui search">
+                <input class="prompt" type="text" placeholder="Search...">
+                <i class="fas fa-search"></i>
+                                
+                <div class="results">
+                </div>
+            </div> -->
+            <div class="good_name">
+                Nike上衣
+            </div>
+
+            <div class="click">
+                <button>已付款</button> <button>運送中</button> <button>已完成</button>
+            </div>
+
+            <div class="ta">
+                    <table class="rwd-table">
+                            <tr>
+                              <th>編號</th>
+                              <th>訂購人</th>
+                              <th>件數</th>
+                              <th>金額</th>
+                              <th>運送地址</th>
+                              <th>手機</th>
+                              <th>訂購日期</th>
+                              <th>狀態</th>
+                              <th>付費方式</th>
+                              <th>修改</th>
+                              <th>刪除</th>
+                            </tr>
+                            <tr>
+                              <td data-th="編號">1</td>
+                              <td data-th="訂購人">小明</td>
+                              <td data-th="件數">2</td>
+                              <td data-th="金額">$500</td>
+                              <td data-th="運送地址">桃園市中壢區普忠路210號</td>
+                              <td data-th="手機">0936228944</td>
+                              <td data-th="訂購日期">2019/10/1</td>
+                              <td data-th="狀態">已付款</td>
+                              <td data-th="付費方式">刷卡</td>
+                              <td data-th="修改"><i class="far fa-pencil-alt"></i></td>
+                              <td data-th="刪除"><i class="far fa-times"></i></td>
+                            </tr>
+                            <tr>
+                              <td data-th="編號">2</td>
+                              <td data-th="訂購人">小明</td>
+                              <td data-th="件數">2</td>
+                              <td data-th="金額">$500</td>
+                              <td data-th="運送地址">桃園市中壢區普忠路210號</td>
+                              <td data-th="手機">0936228944</td>
+                              <td data-th="訂購日期">2019/10/1</td>
+                              <td data-th="狀態">已付款</td>
+                              <td data-th="付費方式">刷卡</td>
+                              <td data-th="修改"><i class="far fa-pencil-alt"></i></td>
+                              <td data-th="刪除"><i class="far fa-times"></i></td>
+                            </tr>
+                            <tr>
+                              <td data-th="編號">3</td>
+                              <td data-th="訂購人">小明</td>
+                              <td data-th="件數">2</td>
+                              <td data-th="金額">$500</td>
+                              <td data-th="運送地址">桃園市中壢區普忠路210號</td>
+                              <td data-th="手機">0936228944</td>
+                              <td data-th="訂購日期">2019/10/1</td>
+                              <td data-th="狀態">已付款</td>
+                              <td data-th="付費方式">刷卡</td>
+                              <td data-th="修改"><i class="far fa-pencil-alt"></i></td>
+                              <td data-th="刪除"><i class="far fa-times"></i></td>
+                            </tr>
+                            <tr>
+                              <td data-th="編號">4</td>
+                              <td data-th="訂購人">小明</td>
+                              <td data-th="件數">2</td>
+                              <td data-th="金額">$500</td>
+                              <td data-th="運送地址">桃園市中壢區普忠路210號</td>
+                              <td data-th="手機">0936228944</td>
+                              <td data-th="訂購日期">2019/10/1</td>
+                              <td data-th="狀態">已付款</td>
+                              <td data-th="付費方式">刷卡</td>
+                              <td data-th="修改"><i class="far fa-pencil-alt"></i></td>
+                              <td data-th="刪除"><i class="far fa-times"></i></td>
+                            </tr>
+                          </table>
+            </div>
+                    
+            <div class="page-normal">
+                    <a class="page-prev">&lt;</a>
+                    <a class="page-current">1</a>
+                    <a href="#">2</a>
+                    <a href="#">3</a>
+                    <a href="#">4</a>
+                    <a href="#">5</a>
+                    <a href="#">6</a>
+                    <a href="#">7</a>
+                    <a href="#">8</a>
+                    <a href="#">9</a>
+                    <a href="#">&gt;</a>
+                </div>
+        </div>
+    </div>
+
+    <!-- <div class="container">
+            <div class="row">
+                <div class='col-sm-6'>
+                    <div class="form-group">
+                        <div class='input-group date' id='datetimepicker1'>
+                            <input type='text' class="form-control" />
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <script type="text/javascript">
+                    $(function () {
+                        $('#datetimepicker1').datepicker({
+                            orientation: "bottom"
+                        });
+                    });
+                </script>
+            </div>
+        </div> -->
+</body>
+</html>
+{/block}

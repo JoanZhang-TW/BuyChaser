@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>BuyChaser</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="https://kit.fontawesome.com/d62f27eee3.js"></script>
+	<style>
+		*{
+			margin:0;
+			box-sizing: border-box;
+			padding: 0;
+			text-decoration: none;
+			font-family: sans-serif;
+			font-family:'微軟正黑體';
+			outline: none;
+		}
+		html{
+			min-height: 100%;
+		}
+		body{
+			min-height: 100%;
+			/* background-color: #95a5a6; */
+			background-image: url("__PUBLIC__/image/1.jpg");
+			background-size: cover;
+		}
+
+		.view{
+			width: 25%;
+			height: 75%;
+			padding: 3% 3%;
+			left: 38%;
+			top: 7%;
+			border-radius: 9%;
+			background: bisque;
+			position: fixed;
+		}
+
+		.login{
+			color: #555;
+			margin-left: 4%;
+			font-size: 24px;
+			font-weight: bold;
+			display: inline;
+			border: none;
+			background: none;
+		}
+
+		.circle{
+			width: 100%;
+			margin-left: 3%;
+			margin-top:10%;
+		}
+
+		.c{
+			border:0;
+			border-radius: 50%;
+			background-color: #D09E88;
+			width: 20%;
+			height:50px;
+			margin-right: 12%;
+		}
+
+		.order {
+			height: 50px;
+			line-height: 60px;
+			text-align: center;
+		
+		}
+
+		.order .line {
+			display: inline-block;
+			width: 42%;
+			border-top: 2px solid #555;
+		}
+
+		.order .txt {
+			color: #555;
+			vertical-align: middle;
+			font-weight: bold;
+		}
+
+		.letter{
+			width: 40%;
+			height: 10px;
+			margin-top:5%;
+			margin-left: 2%;
+			color: #555;
+			font-weight: bold;
+		}
+
+		.form-group{
+			position: relative;
+			margin:10% 0%;
+		}
+
+		.form-control{
+			border-radius: 25px;
+			border: 0;
+			width:100%;
+			height: 35px;
+			font-size: 20px;
+			color:#555;
+			text-align: center;
+			background-color: #D09E88;
+		}
+
+		.submit{
+			border: 0;
+			border-radius: 10px;
+			font-size: 18px;
+			margin-left: 32%;
+			text-align: center;
+			width: 30%;
+			height: 30px;
+			font-weight: bold;
+			outline-style: hidden;
+			color: #555;
+			margin-top: 3%;
+			background-color: #dddddd;
+		}
+
+		#sign{
+			position: relative;
+			top: -50%;
+			visibility: hidden;
+		}
+
+		@media(max-width: 480px){
+            .view{
+				width: 72%;
+				height: 75%;
+				padding: 3% 3%;
+				left: 15%;
+				top: 6%;
+				border-radius: 13%;
+				background: bisque;
+				position: fixed;
+			}
+
+			.login{
+				padding-top: 7%;
+				margin-left: 4%;
+				font-size: 24px;
+				font-weight: bold;
+				display: inline;
+				border: none;
+				background: none;
+			}
+
+			.letter{
+				width: 40%;
+				height: 10px;
+				margin-top:5%;
+				margin-left: 5%;
+				color: #555;
+				font-weight: bold;
+			}
+
+			.form-group{
+				position: relative;
+				margin:10% 3%;
+			}
+
+			.form-control{
+				border-radius: 25px;
+				border: 0;
+				width:100%;
+				height: 40px;
+				font-size: 20px;
+				color:#555;
+				text-align: center;
+				background-color: #D09E88;
+			}
+        }
+	</style>
+</head>
+<body>
+    <div class="view" id="view">
+        <button class="login" onclick="sign()">註冊</button>
+        <button class="login" onclick="login()">登入</button>
+
+        <div class="circle">
+            <button class="c"><i class="fab fa-facebook-f fa-2x" style="color: ghostwhite"></i></button>
+            <button class="c"><i class="fab fa-google fa-2x"style="color: ghostwhite"></i></button>
+            <button class="c"><i class="fab fa-weixin fa-2x" style="color: ghostwhite"></i></button>
+        </div>
+        <div class="order">
+            <span class="line"></span>
+            <span class="txt">or</span>
+            <span class="line"></span>
+        </div>
+
+        <div id="login">
+            <form action="/public/index/index/Login" method="post">
+                <p class="letter">Email</p>
+                <div class="form-group">
+                    <input type="email" name="email" class="form-control" >
+                </div>
+                <p class="letter" >Password</p>
+                <div class="form-group">
+                    <input type="password" name="password" class="form-control"  >
+                </div>
+        
+                <button type="submit" class="submit">確認</button>
+            </form>
+        </div>
+
+        <div id="sign">
+            <form action="" method="post">
+                <p class="letter">Name</p>
+                <div class="form-group">
+                    <input type="text" class="form-control" >
+                </div>
+                <p class="letter">Email</p>
+                <div class="form-group">
+                    <input type="email" class="form-control" >
+                </div>
+                <p class="letter" >Password</p>
+                <div class="form-group">
+                    <input type="password" class="form-control"  >
+                </div>
+        
+                <button type="submit" class="submit">確認</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function sign(){
+            document.getElementById("sign").style.visibility="visible";
+            document.getElementById("login").style.visibility="hidden";
+            document.getElementById("view").style.height="90%";
+        }
+
+        function login(){
+            document.getElementById("login").style.visibility="visible";
+            document.getElementById("sign").style.visibility="hidden";
+            document.getElementById("view").style.height="75%";
+        }
+    </script>
+</body>
+</html>
+{block name="js"}
+<script>
+
+
+
+//document.getElementById("postid");
+
+	function submit(){
+	/*
+		$.ajax({
+
+			method:'post',
+
+			data:{
+				email:$("#email").val(),
+				password:$("#password").val()
+			},
+
+			url:"/public/index/index/Login",
+
+			success:function(res){
+				if(res == 200){
+					toast("登入成功","登入訊息：","success","fade","10000","mid-center","#3c763d");
+					window.location.href = '/public/index/index/view';
+				}else{
+					toast("密碼錯誤","錯誤訊息：","error","fade","10000","mid-center","#9EC600");
+				}
+			},
+			error:function(request, error){
+				toast("伺服器錯誤","錯誤訊息：","error","fade","10000","mid-center","#9EC600");
+			}
+
+		});
+	*/	
+
+	}
+	
+	function toast(text,heading,icon,showHideTransition,hideAfter,position,loaderBg){
+		$.toast({
+			text: text, 
+			heading: 'Note',
+			icon: icon, // Type of toast icon
+			showHideTransition: 'fade', // fade, slide or plain
+			allowToastClose: true, // Boolean value true or false
+			hideAfter: hideAfter, // false to make it sticky or number representing the miliseconds as time after which toast needs to be hidden
+			stack: 5, // false if there should be only one toast at a time or a number representing the maximum number of toasts to be shown at a time
+			position: position, // bottom-left or bottom-right or bottom-center or top-left or top-right or top-center or mid-center or an object representing the left, right, top, bottom values
+			
+			
+			
+			textAlign: 'left',  // Text alignment i.e. left, right or center
+			loader: true,  // Whether to show loader or not. True by default
+			loaderBg: loaderBg,  // Background color of the toast loader
+			beforeShow: function () {}, // will be triggered before the toast is shown
+			afterShown: function () {}, // will be triggered after the toat has been shown
+			beforeHide: function () {}, // will be triggered before the toast gets hidden
+			afterHidden: function () {}  // will be triggered after the toast has been hidden
+		});
+	
+	}
+	
+</script>
+
+
+{/block}
+</html>

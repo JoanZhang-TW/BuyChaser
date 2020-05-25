@@ -1,0 +1,279 @@
+  {block name="css"}
+  <style>
+	.file {
+		visibility: hidden;
+		/*position: absolute;*/
+	}
+	.view {
+		height: 20vh;
+	}
+	.view img {
+		/*
+		height: 225px;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		margin: auto;*/
+	}
+	.card-body {
+		position: relative;
+		overflow: hidden;
+		cursor: default;
+		height: 120px;
+	}
+
+  </style>
+  {/block}
+
+{extend name="Public:header" /}
+{block name="content"}
+
+
+
+
+
+ <!-- <div class="start">開始收音</div>
+<div class="content">你說的內容是：<span class="speech"></span><span class="blinking"></span></div> -->
+
+<div class="container px-lg-5 py-6 mt-5 pt-5 bg-white">
+
+	<div class="row mb-3"><!-- 品牌 -->
+		
+
+		<div class="col-sm-1 mb-sm-0 text-center green lighten-4">
+			<div class="py-1 h3">
+					品牌
+			</div>
+		</div>
+
+		<div class="col-sm-11 mb-5 mb-sm-0">
+			<div class="nav-scroller py-1 mb-2 ">
+				<nav class="nav d-flex justify-content-between pb-0  scrollbar-dusty-grass thin">
+					{volist name="brand" id="cvo" empty=""}
+						<a class="p-2 text-muted h4" onclick="search_api('{$cvo.name}')">{$cvo.name}  </a>
+					{/volist}
+				</nav>
+			</div>
+		</div>
+
+
+
+	</div><!-- 品牌 -->
+
+
+
+	<div class="row"><!-- 類型 -->
+		
+
+		<div class="col-sm-1 mb-sm-0 text-center green lighten-4">
+			<div class="py-1 h3">
+					國家
+			</div>
+		</div>
+		
+		<div class="col-sm-11 mb-5 mb-sm-0">
+			<div class="nav-scroller py-1 mb-2">
+				<nav class="nav d-flex justify-content-between p-0  scrollbar-dusty-grass thin">
+				{volist name="country" id="cvo" empty=""}
+					<a class="p-0 text-muted h3" onclick="search_api('{$cvo.name}')">{$cvo.name}</a>
+				{/volist}
+				</nav>
+			</div>
+		</div>
+
+
+
+	</div><!-- 類型 -->
+
+
+	<div class="row mt-5" id="return_speech">
+
+			{volist name="goods" id="pvo" empty=""}
+
+
+			<div class="col-xl-3 col-lg-3 col-md-3 col-6 mb-5"  data-toggle="modal" data-target="#exampleModal"data-toggle="modal" data-target="#exampleModal" data-whatever="{$pvo.goods_name}" data-member_id="{$pvo.member_id}" data-pvo_id="{$pvo.id}">
+	
+					<!--Collection card-->
+					<div class="card collection-card z-depth-1-half">
+						<!--Card image-->
+						<div class="view zoom ">
+							<img src="{$pvo.goods_img}" class="img-fluid" alt="">
+							<div class="stripe-title rgba-grey-strong d-none d-sm-block">
+									<a class="text-white">
+										{$pvo.goods_name} <br>{$pvo.goods_brand}
+									</a>
+							</div>
+							<div class="stripe-bottom p-3">
+
+									<div class="d-flex justify-content-between align-items-center text-white">
+											<!--span class="text-sm text-muted"><i class="far fa-eye pr-1"></i>59</span-->
+											<span class="text-sm text-muted"><i class="fas fa-heart pr-1"></i>{$pvo.goods_num} 人</span>
+									</div>
+	
+							</div>
+						</div>
+						<!--Card image-->
+
+						<div class="card-body p-0 ">
+								<p class="h6 p-3">{$pvo.goods_des}</p>
+						</div>
+						<div>
+
+								<div class="d-flex justify-content-between align-items-center rgba-grey-strong p-1">
+										<div class="col-xl-4 col-lg-4 col-md-4 col-10">
+												<span class=""><i class="fas fa-map-marker-alt pr-1"></i>{$pvo.goods_lo}</span>
+											</div>
+											<div class="col-8 text-right d-none d-sm-block">
+													<span class=""><i class="fas fa-heart pr-1"></i>{$pvo.goods_num} 人</span>
+										</div>
+								</div>
+						</div>
+
+
+
+
+					</div>
+					<!--Collection card-->
+
+		
+			</div>
+			{/volist}
+
+			
+	</div>
+
+	<!--div class="row mt-5" >
+
+
+
+	</div-->
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+{/block}
+
+
+
+<footer   style="width:100%;height:500px">
+
+
+
+
+</footer>
+
+
+<div class="bg-medgreen" style="width:100%;height:10rem">
+
+</div>
+
+
+</body>
+{block name="js"}
+<script>
+	$(document).on("click", ".browse", function() {
+	var file = $(this).parents().find(".file");
+	file.trigger("click");
+	});
+	$('input[type="file"]').change(function(e) {
+	var fileName = e.target.files[0].name;
+	$("#file").val(fileName);
+
+	var reader = new FileReader();
+	reader.onload = function(e) {
+		// get loaded data and render thumbnail.
+		document.getElementById("preview").src = e.target.result;
+	};
+	// read the image file as a data URL.
+	reader.readAsDataURL(this.files[0]);
+	});
+
+
+
+
+
+
+	var text = document.querySelector(".speech");
+	var startBtn = document.querySelector(".start");
+
+	var recognition = new webkitSpeechRecognition();
+	// set params
+	recognition.continuous = false;
+	recognition.lang = 'zh-TW';
+	recognition.interimResults = true;
+
+	// start immediately
+	// recognition.start();
+
+	recognition.onresult = function(event) {
+		var result = event.results[event.results.length - 1];
+		text.innerHTML = result[result.length - 1 ].transcript;
+		console.log(text.innerHTML);
+
+
+		search_api(text.innerHTML);
+
+	}
+
+	// speech error handling
+	recognition.onerror = function(event){
+	console.log('error', event);
+	}
+
+	recognition.onend = function() {
+	console.log("end");
+	// auto restart
+	recognition.start();
+	}
+
+	startBtn.addEventListener("click", function() {
+	recognition.start();
+	this.style.display = "none";
+	document.querySelector(".content").style.display = "block";
+	})
+
+
+
+	function search_api(x){
+		//alert(x);
+		$.ajax({
+
+			method:'post',
+
+			data:{
+
+				text:x
+
+			},
+
+			url:"{:url('Index/speech_search')}",
+
+			success:function(res){
+				console.log(res);
+				$('#return_speech').html(res);
+				
+			}
+
+		});
+	}
+
+
+</script>
+{/block}
+</html>

@@ -1,0 +1,23 @@
+  {volist name="goods" id="pvo" empty=""}
+                                    <tr id="{$pvo.id}">
+                                        <td data-th="選取" scope="row">
+                                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                                            <label class="form-check-label" for="defaultCheck1"></label>
+                                        </td>
+                                        <!-- <td data-th="編號">{$pvo.id}</td> -->
+                                        <td data-th="商品圖片" class="pic"><img src="{$pvo.goods_img}" alt="" class="img-fluid z-deptd-0"></td>
+                                        <td data-th="商品名稱">{$pvo.goods_name}</td>
+                                        <td data-th="尺寸">{$pvo.goods_size}</td>
+                                        <!-- <td></td> -->
+                                        <td data-th="金額">${$pvo.goods_price}</td>
+                                        <td data-th="數量">{$pvo.goods_num}</td>
+                                        <td data-th="期限">{$pvo.goods_date}</td>
+                                        <td data-th="修改">
+                                            <a href='{:url("Index/management_modify","id=".$pvo.id)}'><i class="far fa-pencil-alt"></i></a>
+                                        </td>
+                                        <td data-th="刪除">
+                                            <!--button type="button" class="btn btn-sm btn-danger waves-effect waves-light" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove item">X</button-->
+                                            <a onclick="p_delete('{$pvo.id}')" ><i class="far fa-times"></i></a>
+                                        </td>
+                                    </tr>
+                                    {/volist}

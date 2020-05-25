@@ -1,0 +1,659 @@
+{extend name="Public:header" /}
+{block name="content"}
+<html>
+<head>
+    <meta charset="utf-8">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+TC&display=swap" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker3.standalone.min.css"> -->
+    
+    <!-- 使用 jQuery Datepicker的中文化-->
+    <!-- <script type="text/javascript" src="../jquery/jquery.ui.datepicker-zh-TW.js"></script><a name="more"></a>
+    <span style="font-family: Times New Roman;"><span style="white-space: normal;">
+    </span></span> -->
+    
+    <style>
+        html{
+            height: 100%;
+        }
+
+        body{
+            /* font-family: 微軟正黑體; */
+            font-family: 'Noto Sans TC', sans-serif;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        .abc{
+            border-bottom: 1.5px solid #c8c8a9;
+        }
+
+        .abc:last-of-type{
+            border-bottom: 1.5px solid white;
+        }
+
+        .c1{
+            height: auto;
+            background-color: #fff;
+            /* margin-top: 2%; */
+            clear: both;
+        }
+
+        .bar{
+            position: absolute;
+            top: 3%;
+            right: 3%;
+        }
+
+        .t{
+            font-size: 28px;
+            padding-left: 9%;
+            background-color: #fff;
+            color:#466900;
+            padding-top: 3%;
+            float: left;
+        }
+
+        .link{
+            padding-top: 3.7%;
+            padding-left: 73.5%;
+        }
+
+        .link a{
+            color: black;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .link span{
+            margin-left: 2%;
+            margin-right: 2%;
+        }
+
+        .content{
+            background-color: #fff;
+            margin-left: 9%;
+            width: 75%;
+        }
+
+        .click{
+            padding-top: 2.5%;
+        }
+
+        .click button{
+            border: none;
+            margin-bottom: 3%;
+            color: gray;
+            font-weight: bold;
+            height: 30px;
+            background-color: inherit;
+            border-bottom: 2px solid white;
+        }
+
+        .click button:hover{
+            border-bottom: 2px solid orange;
+        }
+
+        .ta{
+            display: flex;
+            justify-content: center;
+            margin-top: 0%;
+        }
+
+        .ta table{
+            width: 100%;
+            text-align: center;
+            overflow: auto;
+            /* border: 2px solid #c8c8a9; */
+        }
+
+        .rwd-table {
+		 	 overflow: hidden;
+			}
+
+			/* .rwd-table tr:nth-of-type(2n){
+			  background: #eee;
+            } */
+            
+			.rwd-table th, 
+			.rwd-table td {
+			  margin: 0.5em 1em;
+            }
+            
+			.rwd-table {
+			  min-width: 100%;
+			}
+
+			.rwd-table th {
+			  display: none;
+			}
+
+			.rwd-table td {
+              display: block;
+              font-size: 16px;
+              font-weight: bold;
+            }
+
+			.rwd-table td:before {
+			  content: attr(data-th) " : ";
+			  width: 6.5em;
+              display: inline-block;
+              color:#f69e53;
+			}
+
+			.rwd-table th, .rwd-table td {
+              text-align: center;
+              font-family: 'Noto Sans TC', sans-serif;
+            }
+            
+            .rwd-table th{
+                color: white;
+            }
+
+			.rwd-table th, .rwd-table td:before {
+              font-weight: bold;
+              font-size: 18px;
+              font-family: 微軟正黑體;
+            }
+
+            .rwd-table tr:first-child{
+                border-left: 0;
+                background-color: #f69e53;
+                border-bottom: none;
+            }
+
+            .rwd-table tr:first-child:hover{
+                border-left: 0;
+                background-color: #f69e53;
+            }
+
+            .rwd-table tr{
+                /* border-left: 5px solid white; */
+                border-bottom: 1.5px solid #c8c8a9;
+                color:dimgray;
+            }
+
+            .rwd-table tr:last-child{
+                border-bottom: 0;
+            }
+
+            .rwd-table tr:hover{
+                background-color: #eaeaea;
+                /* border-left: 5px solid #c8c8a9; */
+            }
+
+            .rwd-table .btn1, .rwd-table .btn2{
+                border: 0;
+                border-radius: 7px;
+                padding-top: 2px;
+                padding-bottom: 2px;
+                font-weight: bold;
+            }
+
+            .rwd-table .btn1{
+                background-color: #00A0FF;
+                color:white;
+                line-height: 30px;
+            }
+
+            .rwd-table .btn2{
+                background-color: #DE3C3C;
+                color:white;
+                line-height: 30px;
+            }
+
+        .type input{
+            outline: none;
+            width: 94%;
+            border: 0;
+            font-size: 14px;
+        }
+
+        .search{
+            margin-left: -13%;
+            background-color: #aaaaaa;
+            color: white;
+            text-align: center;
+            margin-top: 2.3%;
+            padding: 0.3% 0 0.3% 0;
+            border-radius: 6px;
+            width: 6.8%;
+            margin-bottom: 2%;
+            cursor: pointer;
+            float: left;
+        }
+
+        .search span{
+            margin-right: 10%;
+        }
+
+        .search_all{
+            margin-top: 1%;
+            margin-left: 9%;
+            clear: both;
+            width: 75%;
+        }
+
+        .type{
+            width: 28%;
+            padding-bottom: 0.5%;
+            border-bottom: 2px solid gray;
+            float: left;
+            margin-right: 5%;
+            margin-bottom: 4%;
+        }
+
+        .delete.option{
+            /* clear: both; */
+            margin-left: -5%;
+            margin-top: 2.4%;
+            width: 8%;
+            text-align: center;
+            margin-bottom: 2%;
+            float: left;
+        }
+
+        .delete.option button{
+            border: 0;
+            border-radius: 7px;
+            padding:3%;
+            color: black;
+        }
+
+        .fa-pencil-alt{
+            background-color: #dddddd;
+            padding: 8%;
+            border-radius: 25px;
+            color: dimgray;
+        }
+
+        .fa-times{
+            background-color:#dddddd ;
+            padding: 8% 12% 8% 12%;
+            border-radius: 25px;
+            color: dimgray;
+        }
+
+        .pagination{
+            display: flex;
+            justify-content: center;
+            padding-top: 5%;
+            background-color: white;
+        }
+
+        .pagination .page-link{
+            color: black;
+        }
+
+        .good_type{
+            margin-bottom: 5%;
+            text-align: center;
+            margin-left: 10%;
+        }
+
+        .good_type:first-child{
+            margin-top: 5%;
+        }
+
+        .good_type span{
+            font-size: 18px;
+            color: #f9802d;
+            float: left;
+            margin-right: 10%;
+        }
+
+        .good_type input{
+            width: 60%;
+        }
+
+        .modal-title{
+            color: #466900;
+            
+        }
+
+        .modal-footer button{
+            position: relative;
+            right: 15%;
+            border: 0;
+            color: white;
+            background-color: black;
+            border-radius: 7px;
+            width: 10%;
+            height: 30px;
+        }
+
+        @media(max-width: 480px){
+            .link{
+                padding-top: 2%;
+                padding-left: 9.5%;
+                clear: both;
+            }
+                
+            .c1{
+                padding-top: 5%;
+            }
+
+            .rwd-table td{
+                text-align: left;
+            }
+
+            .type input{
+                width: 92%;
+            }
+
+            .search{
+                padding: 0.7% 0 0.7% 0;
+                width: 23%;
+                margin-bottom: 4%;
+                margin-left: 9%;
+                margin-top: 5%;
+            }
+
+            .search_all{
+                width: 90%;
+            }
+
+            .type{
+                width: 70%;
+                padding-bottom: 1.5%;
+                margin-bottom: 6%;
+            }
+            
+            .delete.option{
+                margin-left: 2%;
+                margin-top: 4.5%;
+                width: 30%;
+                text-align: center;
+            }
+
+            .delete.option button{
+                border: 0;
+                border-radius: 7px;
+                padding-top: 3%;
+                padding-bottom: 3%;
+                background-color:#7BB31A;
+            } 
+                    
+            .fa-pencil-alt{
+                padding: 3%;
+            }
+
+            .fa-times{
+                padding: 3% 4% 3% 4%;
+            }
+
+            .pagination{
+                padding-top: 10%;
+                padding-bottom: 10%;
+            }
+
+            .good_type{
+                margin-bottom: 10%;
+                text-align: center;
+            }
+
+            .good_type:first-child{
+                margin-top: 12%;
+            }
+
+            .modal-footer button{
+                position: relative;
+                right: 13%;
+                border: 0;
+                color: white;
+                background-color: black;
+                border-radius: 7px;
+                width: 25%;
+                height: 32px;
+            }
+        }
+
+        @media (min-width: 480px) {
+            .rwd-table td:before {
+              display: none;
+            }
+           .rwd-table th, .rwd-table td {
+              display: table-cell;
+              padding: 0.25em 0.5em;
+            }
+            .rwd-table th:first-child, 
+            .rwd-table td:first-child {
+              padding-left: 0;
+            }
+            .rwd-table th:last-child, 
+            .rwd-table td:last-child {
+              padding-right: 0;
+            }
+             .rwd-table th, 
+             .rwd-table td {
+              padding: 1em !important;
+            }
+          }
+    </style>
+</head>
+<body onload="color()">
+    <div class="t">
+        必買清單管理
+    </div>
+
+    <div class="link">
+        <a href="{:url('Index/view')}"><i class="far fa-home"></i></a><span>></span><a href="{:url('Index/item_customer')}">必買清單管理</a>
+    </div>
+
+    <div class="search" data-toggle="collapse" data-target="#search">
+        <span>search</span><i class="far fa-search"></i>
+    </div>
+
+    <div class="delete option">
+        <button class="">刪除已選擇</button>
+    </div>
+        
+    <div class="search_all collapse" id="search">
+        <div class="type">
+            <input type="text" placeholder="類型">
+            <i class="fas fa-sort-down"></i>
+        </div>
+        
+        <div class="type">
+            <input type="text" placeholder="品牌">
+            <i class="fas fa-sort-down"></i>
+        </div>
+        
+        <div class="type">
+            <input type="text" placeholder="尺寸">
+            <i class="fas fa-sort-down"></i>
+        </div>
+        
+        <div class="type">
+            <input type="text" placeholder="顏色">
+            <i class="fas fa-sort-down"></i>
+        </div>
+        
+        <div class="type">
+            <input type="text" placeholder="金額">
+            <i class="fas fa-sort-down"></i>
+        </div>
+        
+        <div class="type">
+            <input type="text" placeholder="狀態">
+            <i class="fas fa-sort-down"></i>
+        </div>
+    </div>
+
+    <!-- <div class="delete option">
+        <button class="">刪除已選擇</button>
+    </div> -->
+
+    <div class="c1">
+        <div class="content">
+            <div class="ta">
+                    <table class="rwd-table">
+                            <tr>
+                              <th></th>
+                              <!-- <th>編號</th> -->
+                              <th>類型</th>
+                              <th>品牌</th>
+                              <th>尺寸</th>
+                              <th>顏色</th>
+                              <th>金額</th>
+                              <th>狀態</th>
+                              <th>修改</th>
+                              <th>刪除</th>
+                            </tr>
+                            
+                            <!-- <tr>
+                              <td data-th="選取">
+                                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                                    <label class="form-check-label" for="defaultCheck1"></label>
+                              </td>
+                              <td data-th="編號">1</td>
+                              <td data-th="類型">衣服</td>
+                              <td data-th="品牌">Nike</td>
+                              <td data-th="尺寸">S</td>
+                              <td data-th="顏色">白色</td>
+                              <td data-th="金額">$1000</td>
+                              <td data-th="狀態"><button class="btn1 ">已購買</button></td>
+                              <td data-th="修改"><i class="far fa-pencil-alt" data-toggle="modal" data-target="#exampleModalCenter"></i></td>
+                              <td data-th="刪除"><i class="far fa-times"></i></td>
+                            </tr> -->
+                                          
+                                            {volist name="orders" id="pvo" empty=""}
+                                            <tr id="{$pvo.id}" class="abc">
+                                                <td data-th="選取"><input class="form-check-input" type="checkbox" value="" id="defaultCheck{$pvo.id}">
+                                                    <label class="form-check-label" for="defaultCheck{$pvo.id}"></label></td> 
+                                                <!-- <td data-th="編號">{$pvo.id}</td>  -->
+                                                <td data-th="類型">{$pvo.order_type}</td>
+                                                <td data-th="品牌">{$pvo.order_brand}</td>
+                                                <td data-th="尺寸">{$pvo.order_size}</td>
+                                                <!-- <td></td> -->
+                                                <td data-th="顏色">{$pvo.order_color}</td>
+                                                <td data-th="金額">${$pvo.order_price}</td>
+                                                <td data-th="狀態"><button class="btn2" name="btn2">{$pvo.order_status}</button></td>
+                                                <td data-th="修改"> <a href='{:url("Index/management_modify","id=".$pvo.id)}' ><i class="far fa-pencil-alt"></i></a></td>
+                                                <td data-th="刪除"> <a onclick="p_delete('{$pvo.id}')" ><i class="far fa-times"></i></a></td>
+                                            </tr>
+                                            {/volist}
+                                          
+                                            <script>
+                                                function color(){
+                                                    var b = document.getElementsByName("btn2");
+
+                                                    for(i=0;i<=b.length;i++)
+                                                    {
+                                                        if(b[i].innerHTML=="已購買"){
+                                                            b[i].style.backgroundColor="#00A0FF";
+                                                        }
+                                                    }
+                                                }
+                                            </script>
+                          </table>
+            </div>
+        </div>
+    </div>
+
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalCenterTitle">修改</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="good_type">
+                <span>類型 :</span>
+                <input type="text" class="form-control">
+              </div>
+
+              <div class="good_type">
+                <span>品牌 :</span>
+                <input type="text" class="form-control">
+              </div>
+
+              <div class="good_type">
+                <span>尺寸 :</span>
+                <input type="text" class="form-control">
+              </div>
+
+              <div class="good_type">
+                <span>顏色 :</span>
+                <input type="text" class="form-control">
+              </div>
+
+              <div class="good_type">
+                <span>金額 :</span>
+                <input type="text" class="form-control">
+              </div>
+            </div>
+            <div class="modal-footer">
+                <button>確認</button>
+              <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button> -->
+            </div>
+          </div>
+        </div>
+      </div>
+</body>
+</html>
+{/block}
+
+{block name="js"}
+
+<script>
+	$(document).on("click", ".browse", function() {
+	var file = $(this).parents().find(".file");
+	file.trigger("click");
+	});
+	$('input[type="file"]').change(function(e) {
+	var fileName = e.target.files[0].name;
+	$("#file").val(fileName);
+
+	var reader = new FileReader();
+	reader.onload = function(e) {
+		// get loaded data and render thumbnail.
+		document.getElementById("preview").src = e.target.result;
+	};
+	// read the image file as a data URL.
+	reader.readAsDataURL(this.files[0]);
+    });
+    
+    function p_delete(x){
+		$.ajax({
+
+			method:'post',
+
+			data:{
+
+				id:x,
+
+			},
+
+			url:"{:url('Index/p_delete')}",
+
+			success:function(res){
+				if(res == 200){
+					toast("刪除成功","成功訊息：","success","fade","1000","mid-center","#3c763d");
+
+					$('#'+x).remove();
+				}else{
+					toast("刪除錯誤","錯誤訊息：","error","fade","1000","mid-center","#9EC600");
+				}
+			},
+			error:function(request, error){
+				toast("伺服器錯誤","錯誤訊息：","error","fade","1000","mid-center","#9EC600");
+			}
+
+		});
+	}
+
+</script>
+
+
+{/block}

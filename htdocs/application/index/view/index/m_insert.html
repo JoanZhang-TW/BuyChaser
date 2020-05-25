@@ -1,0 +1,152 @@
+
+{extend name="Public:header" /}
+{block name="css"}
+<style>
+	.file {
+		visibility: hidden;
+		/*position: absolute;*/
+	}
+</style>
+{/block}
+
+
+{block name="content"}
+
+
+
+<div class="container-fluid px-lg-5 py-6 mt-5 pt-5 bg-white">
+	 <!--Header-->
+ 	<div class="text-center">
+			<h2 class="dark-grey-text mb-5"><strong>代購商品新增</strong></h2>
+	</div>
+	<a class="btn " href="{:url('Index/management_buy')}"  style="font-size: 1.2rem;margin-left:10%;background-color: #8EC0E4;">回上一頁</a>
+		<div class="row">
+
+				<!--Grid column-->
+				<div class="col-md-10 my-3 text-left"style="margin-left:10%;">
+  
+					<div class="card">
+						<div class="card-body">
+
+							<!-- Form -->
+							<form class="text-center" style="color: #757575;" action="{:url('Index/management_insert')}" enctype="multipart/form-data" method="post">
+								<div class="form-row">
+									<div class="col">
+										<img src="https://placehold.it/225x150" id="preview" class="img-thumbnail">
+									</div>
+									<div class="col">
+											<input type="file" name="image" class="file" accept="image/*">
+											<div class="input-group my-5">
+												  <input type="text" class="form-control" disabled placeholder="上傳商品照" id="file">
+												  <div class="input-group-append">
+													<button type="button" class="browse btn" style="background-color: #8EC0E4;">Browse...</button>
+												  </div>
+											</div>
+									</div>
+								</div>
+
+								<div class="form-row">
+										<div class="col">
+											<!-- First name -->
+											<div class="md-form">
+												<input type="text" id="name" name="goods_name" class="form-control">
+												<label for="name">商品名稱</label>
+											</div>
+										</div>
+								</div>
+								<div class="form-row">
+										<div class="col">
+												<label class="active">選擇商品國家</label>
+												<!-- <select class="browser-default custom-select mb-4" name="goods_lo">
+														<option value="" disabled="" selected="">選擇類型</option>
+														{volist name="country" id="cvo" empty=""}
+																<option value="{$cvo.name}" >{$cvo.name}</option>
+														{/volist}
+												</select> -->
+												<input type="text" class="browser-default custom-select mb-4" id="s_country">
+										</div>
+										<div class="col">
+												<label class="active">選擇商品品牌</label>
+												<select class="browser-default custom-select mb-4" name="goods_brand">
+														<option value="" disabled="" selected="">選擇品牌</option>
+														{volist name="brand" id="cvo" empty=""}
+																<option value="{$cvo.name}" >{$cvo.name}</option>
+														{/volist}
+												</select>
+										</div>
+								</div>
+
+									<div class="form-row">
+											<div class="col">
+												<!-- First name -->
+												<div class="md-form">
+													<input type="text" onkeyup="value=value.replace(/[^\d]/g,'') " id="price" class="form-control" name="goods_price">
+													<label for="price">價格</label>
+												</div>
+											</div>
+											<div class="col">
+												<!-- Last name -->
+												<div class="md-form">
+													<input type="text" id="color" class="form-control" name="goods_color">
+													<label for="color">顏色</label>
+												</div>
+											</div>
+									</div>
+									
+									
+									<div class="md-form">
+											<input class="form-control" id="input-char-counter" type="text" length="10" name="goods_des">
+											<label for="input-char-counter" class="active" >商品描述</label>
+										<span class="character-counter" style="float: right; font-size: 12px; height: 1px;"></span>
+									</div>
+						
+									<!-- Sign in button -->
+									<div class="form-row">
+										<button class="btn"  type="submit" style="font-size: 1.2rem;background-color: #8EC0E4;">新增產品</button>
+									</div>
+											
+							</form>
+							<!-- Form -->
+
+  
+						</div>
+  
+					</div>
+  
+				</div>
+				<!--Grid column-->
+  
+			</div>
+
+
+</div>
+
+
+
+{/block}
+
+{block name="js"}
+<script>
+	$('s_country').change(function(){
+		alert('change');
+	});
+
+	$(document).on("click", ".browse", function() {
+	var file = $(this).parents().find(".file");
+	file.trigger("click");
+	});
+	$('input[type="file"]').change(function(e) {
+	var fileName = e.target.files[0].name;
+	$("#file").val(fileName);
+
+	var reader = new FileReader();
+	reader.onload = function(e) {
+		// get loaded data and render thumbnail.
+		document.getElementById("preview").src = e.target.result;
+	};
+	// read the image file as a data URL.
+	reader.readAsDataURL(this.files[0]);
+	});
+
+</script>
+{/block}

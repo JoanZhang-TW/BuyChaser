@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="__PUBLIC__/css/bootstrap.min.css">
+  <link rel="stylesheet" href="__PUBLIC__/css/FormSignin.css">
+  <link rel="stylesheet" href="__PUBLIC__/css/jquery.toast.css">
+  <script src="__PUBLIC__/js/jquery.min.js"></script>
+  <script src="__PUBLIC__/js/popper.min.js"></script>
+  <script src="__PUBLIC__/js/bootstrap.min.js"></script>
+  <script src="__PUBLIC__/js/jquery.toast.js"></script>
+  
+</head>
+<body>
+
+<nav class="navbar navbar-dark bg-medgreen" >
+  <a class="navbar-brand" href="#">BayChaser</a>
+  <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarsExample01" aria-controls="navbarsExample01" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="navbar-collapse collapse" id="navbarsExample01" style="">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Link1</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Link2</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Link3</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Link4</a>
+      </li>
+
+  </div>
+</nav>
+
+
+
+
+
+
+
+
+
+
+
+<div id="form-body">
+
+	<form class="form-signin text-center">
+	  <img class="mb-4" src="__PUBLIC__/image/bootstrap-solid.svg" alt="" width="150" height="150">
+	  <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+	  <label for="inputEmail" class="sr-only">Email address</label>
+	  <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required="" autofocus="" >
+	  <label for="inputPassword" class="sr-only">Password</label>
+	  <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="" >
+	  <div class="checkbox mb-3">
+		<label>
+		  <input type="checkbox" value="remember-me"> Remember me
+		</label>
+	  </div>
+	  <span class="btn btn-lg text-light bg-medgreen btn-block" onclick="submit()">Sign in</span>
+	  <p class="mt-5 mb-3 text-muted">© fatfat-ting</p>
+	</form>
+</div>
+
+
+
+</body>
+<script>
+
+	function submit(){
+		
+		
+		$.ajax({
+
+			method:'get',
+
+			data:{id:$(this).attr("value")},
+
+			url:"",
+
+			success:function(res){
+				toast("登入成功","登入訊息：","success","fade","10000","mid-center","#3c763d");
+			},
+			error:function(request, error){
+				toast("密碼錯誤","錯誤訊息：","error","fade","10000","mid-center","#9EC600");
+			}
+
+		});
+		
+	}
+	
+	function toast(text,heading,icon,showHideTransition,hideAfter,position,loaderBg){
+		$.toast({
+			text: text, 
+			heading: 'Note',
+			icon: icon, // Type of toast icon
+			showHideTransition: 'fade', // fade, slide or plain
+			allowToastClose: true, // Boolean value true or false
+			hideAfter: hideAfter, // false to make it sticky or number representing the miliseconds as time after which toast needs to be hidden
+			stack: 5, // false if there should be only one toast at a time or a number representing the maximum number of toasts to be shown at a time
+			position: position, // bottom-left or bottom-right or bottom-center or top-left or top-right or top-center or mid-center or an object representing the left, right, top, bottom values
+			
+			
+			
+			textAlign: 'left',  // Text alignment i.e. left, right or center
+			loader: true,  // Whether to show loader or not. True by default
+			loaderBg: loaderBg,  // Background color of the toast loader
+			beforeShow: function () {}, // will be triggered before the toast is shown
+			afterShown: function () {}, // will be triggered after the toat has been shown
+			beforeHide: function () {}, // will be triggered before the toast gets hidden
+			afterHidden: function () {}  // will be triggered after the toast has been hidden
+		});
+	
+	}
+	
+</script>
+</html>
